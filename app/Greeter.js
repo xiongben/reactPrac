@@ -1,33 +1,20 @@
 import React, {Component} from 'react'
 import config from './config.json';
-import HelloMessage from './app';
-var arr=[
-  <h1>deyizhi wansui</h1>,
-  <h2>my fuler</h2>,
-];
-let num="123";
+import styles from './Greeter.css';//导入
+import pic1 from './img/pic1.jpg';
 
-var MyComponent = React.createClass({
-  handleClick: function() {
-    this.refs.myTextInput.focus();
-  },
-  render: function() {
-    return (
-      <div>
-        <input type="text" ref="myTextInput" />
-        <input type="button" value="Focus the text input" onClick={this.handleClick} />
-      </div>
-    );
-  }
-});
-
-
+console.log(styles);
 class Greeter extends Component{
   render() {
     return (
-      <MyComponent/>
+      <div className={styles.root}>
+        {config.greetText}
+        <div>
+           <img src={pic1}/>
+        </div>
+      </div>
     );
   }
 }
 
-export default Greeter        
+export default Greeter;
