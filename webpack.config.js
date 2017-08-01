@@ -9,13 +9,13 @@ console.log(entries);
 entries.index=__dirname + "/app/main.js";
 module.exports = {
   devtool: 'eval-source-map',
-  // entry:  __dirname + "/app/main.js",//已多次提及的唯一入口文件
-  entry:entries,
+  entry:  __dirname + "/app/main.js",//已多次提及的唯一入口文件
+  // entry:entries,
   output: {
     path: __dirname + "/build",//打包后的文件存放的地方
     filename: '[name].js',//打包后输出文件的文件名
-    chunkFilename: '[name].js',
-    publicPath:''
+    chunkFilename: '[name].[chunkhash:5].chunk.js',
+    publicPath:'./'
   },
   module: {//在配置文件里添加JSON loader
    rules: [

@@ -11,17 +11,30 @@ import {
 } from 'react-router-dom';
 import './main.css';
 
+const App = React.createClass({
+  render() {
+    return (
+      <div>
+        <h1>App</h1>
+
+      </div>
+    )
+  }
+});
+
 const BasicExample = () => (
   <Router>
     <div>
       <ul>
+        <li><Link to="/">index</Link></li>
         <li><Link to="/main">main</Link></li>
         <li><Link to="/else">elsepage</Link></li>
         <li><Link to="/login">logionpage</Link></li>
       </ul>
 
       <hr/>
-      <Route exact path="/main" component={Main}/>
+      <Route exact path="/" component={App}/>
+      <Route path="/main" component={Main}/>
       <Route path="/else" component={Else}/>
       <Route path="/login" component={Login}/>
     </div>
