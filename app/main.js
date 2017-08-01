@@ -27,7 +27,7 @@ const BasicExample = () => (
     </div>
   </Router>
 )
-
+render(<BasicExample />, document.getElementById('root'));
 
 //
 // var Else=require.ensure([], () => {
@@ -42,7 +42,7 @@ const BasicExample = () => (
 //               var Profile = require('./src/login/login');
 //               return Profile;
 //             });
-render(<BasicExample />, document.getElementById('root'));
+
 // class App extends Component {
 //   constructor() {
 //     this.state = { currentComponent: Greeter };
