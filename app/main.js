@@ -76,7 +76,41 @@ const BasicExample = () => (
     </div>
   </Router>
 )
+render(<BasicExample />, document.getElementById('root'));
 
-
+<<<<<<< HEAD
 
 render(<BasicExample/>, document.getElementById('root'));
+=======
+//
+// var Else=require.ensure([], () => {
+//       var Profile = require('./src/else/else');
+//       return Profile;
+//     });
+//     var Main=require.ensure([], () => {
+//           var Profile = require('./src/index/index2');
+//           return Profile;
+//         });
+//         var Login=require.ensure([], () => {
+//               var Profile = require('./src/login/login');
+//               return Profile;
+//             });
+
+// class App extends Component {
+//   constructor() {
+//     this.state = { currentComponent: Greeter };
+//   }
+//   openProfile() {
+//     require.ensure([], () => {
+//       var Profile = require('./src/index/index2');
+//       this.setState({
+//         currentComponent: Profile
+//       });
+//     });
+//   }
+//   render() {
+//       return <div>{this.state.currentComponent()}</div>
+//   }
+// };
+// render(<App/>,document.getElementById('root'));
+>>>>>>> bbf51a5ac1ad55210fcab6b0a86955cecf3f23b3
