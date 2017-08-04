@@ -1,10 +1,10 @@
-cnpm {
+ {
   "name": "react",
   "version": "1.0.0",
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "webpack-dev-server --inline",
+    "start": "webpack-dev-server --inline --history-api-fallback",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
