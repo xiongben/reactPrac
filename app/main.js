@@ -4,6 +4,7 @@ import Greeter from './Greeter';
 import Else from './src/else/else';
 import Main from './src/index/index2';
 import Login from './src/login/login';
+import test from './test.ts';
 import {
   BrowserRouter as Router,
   Route,
@@ -17,11 +18,7 @@ let testcss={
   fontSize:'28px'
 };
 
-let testArr=[
-  <h1>this is first title!</h1>,
-  <h2>this is second title!</h2>,
-  <h3>this is third title!</h3>
-]
+
 
 let helloMessage=React.createClass({
   render:function(){
@@ -35,7 +32,6 @@ const App = React.createClass({
     return (
       <div>
         <h1 style={testcss}>{this.props.title}</h1>
-        <div>{testArr}</div>
         <a href={this.props.url}>{this.props.desc}</a>
         <helloMessage name={this.props.title}/>
         <p>--------------------------------我是分割线-----------------------</p>
@@ -51,7 +47,7 @@ const App = React.createClass({
   },
   getDefaultProps(){
     return {
-      title:"我是新的标题党啊",
+      title:"我是新的标ddddddd题党啊",
       desc:"我是新的描述啊",
        url:"http://www.runoob.com"
     }
@@ -76,41 +72,4 @@ const BasicExample = () => (
     </div>
   </Router>
 )
-render(<BasicExample />, document.getElementById('root'));
-
-<<<<<<< HEAD
-
 render(<BasicExample/>, document.getElementById('root'));
-=======
-//
-// var Else=require.ensure([], () => {
-//       var Profile = require('./src/else/else');
-//       return Profile;
-//     });
-//     var Main=require.ensure([], () => {
-//           var Profile = require('./src/index/index2');
-//           return Profile;
-//         });
-//         var Login=require.ensure([], () => {
-//               var Profile = require('./src/login/login');
-//               return Profile;
-//             });
-
-// class App extends Component {
-//   constructor() {
-//     this.state = { currentComponent: Greeter };
-//   }
-//   openProfile() {
-//     require.ensure([], () => {
-//       var Profile = require('./src/index/index2');
-//       this.setState({
-//         currentComponent: Profile
-//       });
-//     });
-//   }
-//   render() {
-//       return <div>{this.state.currentComponent()}</div>
-//   }
-// };
-// render(<App/>,document.getElementById('root'));
->>>>>>> bbf51a5ac1ad55210fcab6b0a86955cecf3f23b3

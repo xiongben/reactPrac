@@ -3,7 +3,7 @@ import config from './config.json';
 import styles from './Greeter.css';//导入
 import pic1 from './img/pic1.jpg';
 
-console.log(styles);
+//console.log(styles);
 class Greeter extends Component{
   render() {
     return (

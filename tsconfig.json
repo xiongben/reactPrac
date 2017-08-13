@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "outDir": "./build/",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "module": "common.js",
+        "target": "es5",
+        "jsx": "react"
+    },
+    "include": [
+        "./app/*"
+    ]
+}
