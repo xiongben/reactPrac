@@ -4,10 +4,29 @@ import "babel-polyfill";
    import React from 'react';
    import {render} from 'react-dom';
    import Calculator from './Greeter';
+   import Counter from './components';
+   import counter from './reducers';
    import {createStore} from 'redux';
    
    
-   const store=createStore(fn);
+const store = createStore(counter)
+const rootEl = document.getElementById('root')
+
+const render2 = () => render(
+  <div>
+  <Calculator/>
+  <Counter
+    value={store.getState()}
+    onIncrement={() => store.dispatch({ type: 'INCREMENT' })}
+    onDecrement={() => store.dispatch({ type: 'DECREMENT' })}
+  />
+  
+  </div>,
+  rootEl
+)
+
+render2()
+store.subscribe(render2)
    
    
 // import Else from './src/else/else';
@@ -82,4 +101,9 @@ import "babel-polyfill";
 //   </Router>
 // )
 // render(<BasicExample/>, document.getElementById('root'));
-   render(<Calculator/>, document.getElementById('root'));
+   
+   
+   
+   
+// render(<Calculator/>, document.getElementById('root'));
+
