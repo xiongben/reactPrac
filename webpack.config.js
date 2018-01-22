@@ -5,7 +5,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var glob = require('glob');
 
 var entries = getEntry('./app/src/**/*.js');
-console.log(entries);
+//console.log(entries);
 entries.index=__dirname + "/app/main.js";
 module.exports = {
   devtool: 'eval-source-map',
@@ -14,7 +14,7 @@ module.exports = {
   output: {
     path: __dirname + "/build",//打包后的文件存放的地方
     filename: '[name].js',//打包后输出文件的文件名
-    chunkFilename: '[name].[chunkhash:5].chunk.js',
+    chunkFilename: '[name]-[id].[chunkhash:5].chunk.js',
     publicPath:'./'
   },
   module: {//在配置文件里添加JSON loader
