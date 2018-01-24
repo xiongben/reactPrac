@@ -7,7 +7,7 @@ class Main extends Component{
     return (
       <div>
         <div>
-           <h1>this is main page!</h1>
+           <h2>和我在成都的街头走一走，直到所有的灯都熄灭了都不停留!</h2>
         </div>
       </div>
     );
