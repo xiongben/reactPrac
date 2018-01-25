@@ -2,8 +2,8 @@ import "babel-polyfill";
 
 import React from 'react';
 import { render } from 'react-dom';
-import Counter from './components';
-import counter from './reducers';
+// import Counter from './components';
+// import counter from './reducers';
 import { createStore } from 'redux';
 
 // import Else from './src/else/else';
@@ -12,6 +12,7 @@ import Main from './src/index/index2';
 //import test from './test.ts';
 import { HashRouter } from 'react-router-dom';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import {Provider,connect} from 'react-redux';
 
 import Bundle from './bundle.js';
 
@@ -69,4 +70,65 @@ class Init extends React.Component {
 	componentDidMount() {}
 }
 
-render(<Init/>, document.getElementById('root'));
+// render(<Init/>, document.getElementById('root'));
+
+
+
+
+//redux练习
+class Counter extends React.Component{
+	render(){
+		const {value,onIncreaseClick,num,onNumClick} = this.props;
+		return (
+			<div>
+				<span>{value}</span>
+				<p>{num}</p>
+				<button onClick={onIncreaseClick}>按钮</button>
+				<button onClick={onNumClick}>num按钮</button>
+			</div>
+		)
+	}
+}
+
+const increaseAction={type:'increase'};
+const numAction={type:'addnum'};
+
+function counter(state={count:0,num:100},action){
+	const count=state.count;
+	const num=state.num;
+	switch (action.type){
+		case 'increase':
+		 return {count:count+1,num:num}
+		 case 'addnum':
+		 return {num:num+5,count:count}
+		default:
+		return state
+	}
+}
+
+const store=createStore(counter);
+
+function mapStateToProps(state){
+	return {
+		value:state.count,
+		num:state.num
+	}
+}
+
+function mapDispatchToProps(dispatch){
+	return {
+	   onIncreaseClick:()=>dispatch(increaseAction),
+	   onNumClick:()=>dispatch(numAction)
+	}
+}
+
+const App=connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(Counter);
+
+render(
+<Provider store={store}>
+<App/>
+</Provider>,
+ document.getElementById('root'));
