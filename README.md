@@ -17,7 +17,7 @@ react simple practice
 * [baidu](http://www.baidu.com)是什么地方
 ***
 
-[我是图片](http://www.baidu.com/img/bd_logo1.png)点击一下看看
+![我是图片](http://www.baidu.com/img/bd_logo1.png)点击一下看看
 
 
 ##代码展示部分
