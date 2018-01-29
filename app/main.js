@@ -85,6 +85,7 @@ class Counter extends React.Component{
 				<p>{num}</p>
 				<button onClick={onIncreaseClick}>按钮</button>
 				<button onClick={onNumClick}>num按钮</button>
+				<List/>
 			</div>
 		)
 	}
@@ -98,9 +99,10 @@ function counter(state={count:0,num:100},action){
 	const num=state.num;
 	switch (action.type){
 		case 'increase':
-		 return {count:count+1,num:num}
+		//  return {count:count+1,num:num}
+		return Object.assign({}, state, {count:count+1});
 		 case 'addnum':
-		 return {num:num+5,count:count}
+		 return Object.assign({}, state, {num:num+5});
 		default:
 		return state
 	}
