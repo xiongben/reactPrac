@@ -16,9 +16,9 @@ class Login extends Component{
       
   }
   render() {
-    let value=this.props.list.count;
-    let num=this.props.list.num;
-    console.log(this.props);
+    let value=this.props.list.counter.count;
+    let num=this.props.list.counter.num;
+    // console.log(this.props);
     return (
       <div>
         <div>

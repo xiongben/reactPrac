@@ -4,7 +4,7 @@ import React from 'react';
 import { render } from 'react-dom';
 // import Counter from './components';
 // import counter from './reducers';
-import { createStore } from 'redux';
+import { createStore,combineReducers } from 'redux';
 
 // import Else from './src/else/else';
 import Main from './src/index/index2';
@@ -15,6 +15,10 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import {Provider,connect} from 'react-redux';
 
 import Bundle from './bundle.js';
+
+import * as Duck from './components/duck.js';
+
+
 
 let helloMessage = React.createClass({
 	render: function() {
@@ -78,21 +82,28 @@ class Init extends React.Component {
 //redux练习
 class Counter extends React.Component{
 	render(){
-		const {value,onIncreaseClick,num,onNumClick} = this.props;
+		const {value,onIncreaseClick,num,onNumClick,ducknum,onDuckClick} = this.props;
+		console.log(this.props);
 		return (
 			<div>
 				<span>{value}</span>
 				<p>{num}</p>
+				<h2>{ducknum}</h2>
 				<button onClick={onIncreaseClick}>按钮</button>
 				<button onClick={onNumClick}>num按钮</button>
+				<button onClick={onDuckClick}>鸭子按钮</button>
 				<List/>
 			</div>
 		)
 	}
 }
 
+
 const increaseAction={type:'increase'};
 const numAction={type:'addnum'};
+const duckAction=Duck.actions.loadduck();
+
+
 
 function counter(state={count:0,num:100},action){
 	const count=state.count;
@@ -108,19 +119,36 @@ function counter(state={count:0,num:100},action){
 	}
 }
 
-const store=createStore(counter);
+//reduces进行合并，引入duck模式
+// console.log(Duck);
+let ducker=Duck.default;
+
+const rootReducer = combineReducers({
+	counter:counter,
+	ducker:ducker
+	
+});
+
+
+const store=createStore(rootReducer);
+var ss=store.getState();
+console.log(ss);
+
+
 
 function mapStateToProps(state){
 	return {
-		value:state.count,
-		num:state.num
+		value:state.counter.count,
+		num:state.counter.num,
+		ducknum:state.ducker.ducknum
 	}
 }
 
 function mapDispatchToProps(dispatch){
 	return {
 	   onIncreaseClick:()=>dispatch(increaseAction),
-	   onNumClick:()=>dispatch(numAction)
+	   onNumClick:()=>dispatch(numAction),
+	   onDuckClick:()=>dispatch(duckAction),
 	}
 }
 
