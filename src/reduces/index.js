@@ -7,6 +7,7 @@ let initialState = {
     testnum: 200,
     listdata: {},
     text: "initddd",
+    
 };
 const reducer = handleActions({
     'INCREMENT': (state,action) => {
@@ -27,6 +28,19 @@ const reducer = handleActions({
         return {
             ...state,
             testnum:state.testnum+10,
+        }
+    },
+    'LOGIN_SUBMIT': (state, action) => {
+        return {
+            ...state,
+            testnum:state.testnum+10,
+        }
+    },
+    'LOGIN_SUCCESS': (state, action) => {
+        console.log(action);
+        return {
+            ...state,
+            loginres:action.data,
         }
     },
 },initialState)

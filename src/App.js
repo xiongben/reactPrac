@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import CSSModules from 'react-css-modules';
 import logo from './logo.svg';
 import './App.css';
-import {BrowserRouter as Router, Route, Link} from "react-router-dom";
+import {Router, Route, Link} from "react-router-dom";
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware,compose, combineReducers } from 'redux';
 
@@ -10,7 +10,16 @@ import ButtonPanel from "./component/ButtonPanel";
 import Display from "./component/Display";
 import calculate from "./logic/calculate"
 
-import BasicExample from "./Routers";
+import routeConfig from "./Routers";
+
+import {history} from './utils/history';
+
+import asyncComponent from './component/AsyncComponent';
+const Home = asyncComponent(() => import("./component/Home"));
+const Badge = asyncComponent(() => import("./pages/badge/Badge"));
+const Award = asyncComponent(() => import("./pages/award/Award"));
+const Login = asyncComponent(() => import("./pages/login/Login"));
+
 
 class App extends Component {
   state = {
@@ -25,7 +34,14 @@ class App extends Component {
 
   render() {
     return (
-      <BasicExample/>
+      <Router history={history}>
+        <div>
+         <Route exact path="/"  component={Home} />
+          <Route  path="/badge" component={Badge} />
+          <Route  path="/award" component={Award} />
+          <Route  path="/login" component={Login} />
+          </div>
+      </Router>
     );
   }
 }

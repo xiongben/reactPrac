@@ -30,6 +30,12 @@ export default createActions({
     'INCREMENT_ASYNC': () => {
         const testText = "这是异步加法运算";
         return testText;
-    }
+    },
+    'LOGIN_SUBMIT': (params) => {
+        return params;
+    },
+    'LOGIN_SUCCESS': (data) => {
+        return data;
+    },
 });
 

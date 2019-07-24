@@ -6,6 +6,7 @@ const Home = asyncComponent(() => import("./component/Home"));
 
 const Badge = asyncComponent(() => import("./pages/badge/Badge"));
 const Award = asyncComponent(() => import("./pages/award/Award"));
+const Login = asyncComponent(() => import("./pages/login/Login"));
 
 
 class ModalSwitch extends React.Component {
@@ -36,17 +37,47 @@ function BasicExample() {
             <li>
               <Link to={{pathname: "/award"}}>Award</Link>
             </li>
+            <li>
+              <Link to={{pathname: "/login"}}>login</Link>
+            </li>
           </ul>
           <hr/>
           <Route exact path="/" component={Home} />
           <Route  path="/topics" component={Topics} />
           <Route  path="/badge" component={Badge} />
           <Route  path="/award" component={Award} />
+          <Route  path="/login" component={Login} />
         </div>
       </Router>
     )
   }
   
+  const routeConfig = [
+    {
+      path:'/',
+      component: Home,
+    },
+    {
+      path:'/award',
+      component: Award,
+    },
+    {
+      path:'/login',
+      component: Login,
+    },
+    {
+      path:'/badge',
+      component: Badge,
+    },
+    {
+      path:'/topics',
+      component: Topics,
+      childRouters:[
+        {path:'/home',component:Home}
+      ]
+    },
+  ]
+
   // function Home() {
   //   return (
   //     <div>
@@ -101,4 +132,5 @@ function BasicExample() {
     );
   }
 
-  export default BasicExample;
+  // export default BasicExample;
+  export default routeConfig;
