@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import actions from "./../../actions/index"
-import "./Login.less";
-
+import styles from "./Login.less";
+import Toast from "./../../component/Toast";
 
 
 class Login extends Component {
@@ -12,6 +12,7 @@ class Login extends Component {
         this.state = {
             name:null,
             pass:null,
+            warnText:null,
         }
         
          
@@ -19,12 +20,12 @@ class Login extends Component {
     componentDidMount() {
        
     }
-    handleClick = (data,e) => {
-        this.child.changeShowStatus();
-        this.setState({
-            detailData:data
-        });
-    }
+    // handleClick = (data,e) => {
+    //     this.child.changeShowStatus();
+    //     this.setState({
+    //         detailData:data
+    //     });
+    // }
     getData = () => {
         var params = { userId: this.state.userId, ownedBadgeWall:false, uid:this.state.userId};
         var reqUrl = "/reward/badges/get-summary";
@@ -41,7 +42,7 @@ class Login extends Component {
     }
     
     onRef = (ref) => {
-        this.child = ref;
+        this.toast = ref;
     }
     set = (e) => {
         let {name,value} = e.target;
@@ -51,11 +52,15 @@ class Login extends Component {
     }
     submit = () => {
         // this.props.history.push('/badge');
-        let {name,pass} = this.state;
         
-        let params = {name,pass};
-        var res = this.props.loginSubmit(params);
-        console.log(res);
+        
+        let {name,pass} = this.state;
+        if(name == null || pass == null){
+            this.toast.changeShowStatus("can not be null!");
+        }else{
+            let params = {name,pass};
+            var res = this.props.loginSubmit(params);
+        }
     }
     
     render() {
@@ -65,13 +70,15 @@ class Login extends Component {
         var text = this.props.text;
         // console.log(this.props);
         var {increment,decrement,incrementAsync} = this.props;
+        var warnText = "ddddddd";
         return (
-            <div className="loginBox">
-                <p className="loginTitle">登录</p>
-                <input type="text" className="userAdmin" onChange={(e)=>{this.set(e)}} name="name" placeholder="输入用户名"/>
-                <input type="text" className="userAdmin" onChange={(e)=>{this.set(e)}} name="pass" placeholder="输入密码"/>
-                <p className="warnText">格式为数字加字母</p>
-                <button className="submitBtn" onClick={this.submit}>确定</button>
+            <div className={styles.loginBox}>
+                <p className={styles.loginTitle}>登录</p>
+                <input type="text" className={styles.userAdmin} onChange={(e)=>{this.set(e)}} name="name" placeholder="输入用户名"/>
+                <input type="text" className={styles.userAdmin} onChange={(e)=>{this.set(e)}} name="pass" placeholder="输入密码"/>
+                <p className={styles.warnText}>格式为数字加字母</p>
+                <button className={styles.submitBtn} onClick={this.submit}>确定</button>
+                <Toast text={warnText} onref={this.onRef}/>
             </div>
             )
         }
