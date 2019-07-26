@@ -1,0 +1,48 @@
+.listbox{
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+    // background: yellow;
+    height: 100vh;
+    .listTitle{
+       height: 50px;
+       line-height: 50px;
+       font-size: 48px;
+       font-weight: bolder;
+       text-align: left;
+    }
+    .listLi{
+        width: 690px;
+        height: 200px;
+        overflow: hidden;
+        border-bottom: 1px solid #000;
+        margin-left: 30px;
+        margin-bottom: 30px;
+        position: relative;
+        .avatar{
+           width: 200px;
+           height: 200px;
+           position: absolute;
+           left: 0;
+           top:0;
+        }
+        .username{
+           height: 80px;
+           width: 450px;
+        //    background: blue;
+           position: absolute;
+           right: 20px;
+           top:60px;
+           line-height: 80px;
+           text-align: left;
+           font-size: 50px;
+        }
+    }
+}
+
+.tloader{
+    height: 1000px;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    background: blue;
+}

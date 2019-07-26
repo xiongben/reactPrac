@@ -132,6 +132,7 @@
     "less-loader": "^4.1.0",
     "merge": "^1.2.1",
     "node-sass": "^4.11.0",
+    "react-pullload": "^1.2.0",
     "react-redux": "^6.0.0",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",

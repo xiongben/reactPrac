@@ -2,20 +2,28 @@ import React, { Component } from 'react';
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import actions from "./../../actions/index"
-import "./UserList.less";
-
+import styles from "./UserList.less";
+import Api from "./../../utils/fetch";
+import avatar from "./../../static/avatar.jpg";
+import Tloader from 'react-touch-loader';
 
 class UserList extends Component {
     constructor(props) {
         super(props);
-        this.props.onref(this);
         this.state = {
             show: false,
             text: null,
+            listData: [],
+            canRefreshResolve: 1,
+            listLen: 0,
+            hasMore: 0,
+            initializing: 1,
+            refreshedAt: Date.now(),
         }
     }
     componentDidMount() {
-       
+    //    this.getListData(this.props.userId);
+   
     }
     handleClick = (data,e) => {
         this.setState({
@@ -25,23 +33,47 @@ class UserList extends Component {
     changeShowStatus = (text) => {
         this.setState({show:true,text:text});
     }
+    getListData = (userId) => {
+       var params = {userId};
+       Api.get("/wechat/list",params).then(res => {
+           this.setState({listData:res.data});
+       })
+    }
+    userLi = (data) => {
+        return(
+            <div className={styles.listLi} key={data.id}>
+                <img alt="userpic" src={avatar} className={styles.avatar}/>
+                <div className={styles.username}>{data.name}</div>
+            </div>
+        )
+    }
+    loadMore = () => {
+       
+    }
+    handleRefresh = (resolve, reject) => {
+        
+    }
     render() {
         var showAttr = this.state.show? "block":"none";
-        var warnText = this.state.text;
+        var listData = this.state.listData;
+       
+        // var handleRefresh = null;
+        // var hasMore = true;
+
         return (
-            <div className="toastBox" style={{display:showAttr}}>
-                <p className="warnTitle">warn</p>
-                <p className="warnText">{warnText}</p>
-                <button className="closebtn" onClick={this.handleClick}>确定</button>
+            <div className={styles.listbox}>
+               <p className={styles.listTitle}>好友列表</p>
+               
+                
             </div>
             )
         }
 }
 
 function mapStateToProps(state){
-    // const {testnum,text} = state;
+    const {userId} = state;
 	return {
-       
+       userId: userId
 	};
 }; 
 

@@ -39,7 +39,7 @@ function* loginSubmitAsync() {
     const res = yield call(testquest,params);
     // console.log(res);
     yield put({type: 'LOGIN_SUCCESS',data:res});
-    history.push('/badge');
+    history.push('/wechatlist');
 }
 
 export default function* rootSaga() {
