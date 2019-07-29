@@ -52,7 +52,7 @@ class Login extends Component {
     }
     submit = () => {
         // this.props.history.push('/badge');
-        
+        // console.log("test");
         
         let {name,pass} = this.state;
         if(name == null || pass == null){
