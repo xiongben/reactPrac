@@ -32,6 +32,7 @@ class Login extends Component {
         Api.get(reqUrl,params).then(res => {
             this.setState({dataArr:res.onGoing});
         })
+        console.log("test");
         
     }
     testpost = () => {
