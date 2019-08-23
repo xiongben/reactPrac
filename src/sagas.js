@@ -28,7 +28,7 @@ import {history} from './utils/history'
 
 function* loginSubmitAsync() {
     var testquest = function(params){
-        return Api.post("/wechat/login",params).then(
+        return Api.get("/login",params).then(
           res => res
         )
     }
@@ -37,15 +37,20 @@ function* loginSubmitAsync() {
     let params = req.payload;
     // console.log(params);
     const res = yield call(testquest,params);
-    // console.log(res);
+    console.log(res);
     yield put({type: 'LOGIN_SUCCESS',data:res});
-    history.push('/wechatlist');
+    // history.push('/wechatlist');
 }
+
+
+
+
 
 export default function* rootSaga() {
     yield all([
         helloSaga(),
         watchIncrementAsync(),
         loginSubmitAsync(),
+        
     ])
 }

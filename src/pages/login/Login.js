@@ -4,8 +4,7 @@ import {connect} from "react-redux";
 import actions from "./../../actions/index"
 import styles from "./Login.less";
 import Toast from "./../../component/Toast";
-
-
+import Api from "./../../utils/fetch";
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -18,7 +17,7 @@ class Login extends Component {
          
     }
     componentDidMount() {
-       
+       this.testpost();
     }
     // handleClick = (data,e) => {
     //     this.child.changeShowStatus();
@@ -35,8 +34,8 @@ class Login extends Component {
         
     }
     testpost = () => {
-        var params = {id:123,name:"xxxbbbb"};
-        Api.post("/xx/xx",params).then(res => {
+        var params = {username:"波风水门",password:123456};
+        Api.post("/login/adduser",params).then(res => {
             console.log(res);
         })
     }
@@ -58,7 +57,8 @@ class Login extends Component {
         if(name == null || pass == null){
             this.toast.changeShowStatus("can not be null!");
         }else{
-            let params = {name,pass};
+            // let params = {name,pass};
+            let params = {id:1};
             var res = this.props.loginSubmit(params);
         }
     }

@@ -83,6 +83,7 @@ class UserList extends Component {
     }
     //**向上滑动时（在这里才真正的判断是否到最底部）**
     loadData() {
+        console.log(this.refs.onPullUp)
         console.log("数据的高-------------------------", this.refs.onPullUp.clientHeight);
         console.log("滚动的高------------------------", document.documentElement.scrollTop);
         console.log("滚动的高------------------------", document.body.scrollTop);
@@ -90,21 +91,26 @@ class UserList extends Component {
         let { meActs } = this.props;
         let dataHeight = this.refs.onPullUp.clientHeight;
         let scrollHeight = document.body.scrollTop || document.documentElement.scrollTop;
+        console.log(scrollHeight);
         let screenHeight = document.documentElement.clientHeight;
-        const h = 10;//自定义距离底部多少时concat数据
+        const h = 20;//自定义距离底部多少时concat数据
         if (dataHeight - scrollHeight - h < screenHeight && this.state.isFoot) {
-            // this.setState({
-            //     isFoot: false,
-            // });
+            this.setState({
+                isFoot: false,
+            });
             console.log("应该只显示1次");
             let params = {
                 value: this.val,
                 page_index: this._page,
                 page_size: this._page_size,
             }
-            var newArr = this.state.dataArr.concat([1,2,3,4,5,6,7]);
-            this.setState({dataArr:newArr});
-
+            // var newArr = this.state.dataArr.concat([1,2,3,4,5,6,7]);
+            // this.setState({dataArr:newArr});
+            
+            setTimeout(() => {
+                var newArr = this.state.dataArr.concat([1,2,3,4,5,6,7]);
+                this.setState({dataArr:newArr,isFoot:true});
+            }, 2000);
             // meActs.getRecentReadList(this.accessKey, this.accessID, params).then((res) => {
             //     if (res.data.code === 10000 && res.data.data.list.length > 0) {
             //         this.setState({
@@ -138,13 +144,13 @@ class UserList extends Component {
                 <div className={styles.touchBox} onTouchStart={this.touchStart.bind(this)} onTouchEnd={this.touchEnd.bind(this)}>
                     {dataArr.map((data) => this.userLi(data))}
                 </div>
-                {/* <div className="common-bottomTotal">
+                <div className={styles.commonBottomTotal}>
                     {
                         this.state.finished ? <span>我是有底线的</span> :
-                            recentReadList.list.length > 0 ? this.state.isFoot ? <span >上拉加载更多</span> : <ActivityIndicator text="请稍等..." /> :
+                        dataArr.length > 0 ? this.state.isFoot ? <span >上拉加载更多</span> : <span >请稍等。。。</span> :
                                 <span className='iconfont icon-taidu2'>暂无信息</span>
                     }
-                </div> */}
+                </div>
             </div>
         )
     }

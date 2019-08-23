@@ -1,12 +1,13 @@
 import fetch from 'isomorphic-fetch'
 
 // var baseUrl = "http://10.40.16.20:2080";
-var baseUrl = "http://127.0.0.1:3001";
+var baseUrl = "http://localhost:3001";
 
 
 
 function  get(url,params){
     url = baseUrl + url;
+    const yourToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoxMjMsImlhdCI6MTU2NjU1MTMwNCwiZXhwIjoxNTY2NTU0OTA0fQ.0Z3XKPvboHePAyCR49uNFRrfg_ZnAXUteNioaOWcDlM';
     if (params) {
         let paramsArray = [];
         //拼接参数
@@ -20,6 +21,11 @@ function  get(url,params){
     //fetch请求
     return fetch(url,{
         method: 'GET',
+        headers:{
+          'Authorization': `Bearer ${yourToken}`,
+          "Content-Type" : "application/json;charset=utf-8",
+        },
+        // mode: 'cors',
     })
         .then((response) => response.json())
         .then((json) => json)
@@ -31,6 +37,7 @@ function  get(url,params){
 function post(url,params){
     url = baseUrl + url;
     var paramsbody='';
+    const yourToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoxMjMsImlhdCI6MTU2NjU1MTMwNCwiZXhwIjoxNTY2NTU0OTA0fQ.0Z3XKPvboHePAyCR49uNFRrfg_ZnAXUteNioaOWcDlM';
     if (params) {
         let paramsArray = [];
         //拼接参数
@@ -46,7 +53,8 @@ function post(url,params){
         method: 'POST',
         body: paramsbody,
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Authorization': `Bearer ${yourToken}`,
         },
     })
         .then((response) => response.json())
