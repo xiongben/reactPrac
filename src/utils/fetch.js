@@ -33,7 +33,7 @@ function  get(url,params){
             alert(error)
         })
 }
-
+//下一步需要解决token刷新的问题
 function post(url,params){
     url = baseUrl + url;
     var paramsbody='';
