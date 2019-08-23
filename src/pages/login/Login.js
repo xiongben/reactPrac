@@ -31,6 +31,7 @@ class Login extends Component {
         Api.get(reqUrl,params).then(res => {
             this.setState({dataArr:res.onGoing});
         })
+        console.log("test");
         
     }
     testpost = () => {
@@ -51,7 +52,7 @@ class Login extends Component {
     }
     submit = () => {
         // this.props.history.push('/badge');
-        
+        // console.log("test");
         
         let {name,pass} = this.state;
         if(name == null || pass == null){
