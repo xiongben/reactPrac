@@ -17,7 +17,7 @@ class Login extends Component {
          
     }
     componentDidMount() {
-       this.testpost();
+    //    this.testpost();
     }
     // handleClick = (data,e) => {
     //     this.child.changeShowStatus();
