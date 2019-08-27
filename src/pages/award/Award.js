@@ -24,11 +24,13 @@ const data = [
     },
   ];
 
+const videolist = [0,1,2,3,4,5];
+
 export default class Award extends Component {
     constructor(props){
        super(props);
        this.myRef = React.createRef();
-       this.player=null;
+       this.playerlist=[];
        this.state = {
            listData:[],
            detail:{},
@@ -98,15 +100,19 @@ export default class Award extends Component {
           show: false,
         });
       }
-    // getItem = (data) => {
-    //     return (
-    //         <div className="item" key={data.id} onClick={(e) => this.popup(data.id,e)}>
-    //             <p>{data.name}</p>
-    //             <p>this is {data.num} li!</p>
-    //             <p>青春奋斗的日子，触摸理想的岁月</p>
-    //         </div>
-    //     )
-    // }
+    
+    getVideoLi = (ref,id) => {
+        this.playerlist[id] = ref;
+    }
+
+    playStatusChange = (id) => {
+      for(let i=0;i<this.playerlist.length;i++){
+          if(i !== id){
+              this.playerlist[i].stopPlay();
+          }
+      }
+    }
+
     render(){
         var listData = this.state.listData;
         var detailData = this.state.detail;
@@ -143,11 +149,7 @@ export default class Award extends Component {
                     {show ? <div className="menu-mask" onClick={this.onMaskClick} /> : null}
                 </div>
                 <div className={styles.videolist}>
-                    <VideoComponent></VideoComponent>
-                    <VideoComponent></VideoComponent>
-                    <VideoComponent></VideoComponent>
-                    <VideoComponent></VideoComponent>
-                    <VideoComponent></VideoComponent>
+                    {videolist.map((data) => <VideoComponent onref={this.getVideoLi} videoId={data} key={data} statusChange={this.playStatusChange}></VideoComponent>)}
                 </div>
             </div>
         )
