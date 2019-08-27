@@ -428,7 +428,6 @@ module.exports = function(webpackEnv) {
               exclude: cssModuleRegex,
               use: getStyleLoaders({
                 importLoaders: 1,
-                modules: true,
                 sourceMap: isEnvProduction && shouldUseSourceMap,
               }),
               // Don't consider CSS imports dead code even if the
@@ -446,6 +445,7 @@ module.exports = function(webpackEnv) {
                 sourceMap: isEnvProduction && shouldUseSourceMap,
                 modules: true,
                 getLocalIdent: getCSSModuleLocalIdent,
+                localIdentName: '[name]_[local]_[hash:base64:5]',
               }),
             },
             // Opt-in support for SASS (using .scss or .sass extensions).
@@ -457,7 +457,6 @@ module.exports = function(webpackEnv) {
               use: getStyleLoaders(
                 {
                   importLoaders: 2,
-                  modules: true,
                   sourceMap: isEnvProduction && shouldUseSourceMap,
                 },
                 'sass-loader'
@@ -474,7 +473,6 @@ module.exports = function(webpackEnv) {
               use: getStyleLoaders(
                 {
                   importLoaders: 2,
-                  modules: true,
                   sourceMap: isEnvProduction && shouldUseSourceMap,
                 },
                 'less-loader'
@@ -495,6 +493,7 @@ module.exports = function(webpackEnv) {
                   sourceMap: isEnvProduction && shouldUseSourceMap,
                   modules: true,
                   getLocalIdent: getCSSModuleLocalIdent,
+                  localIdentName: '[name]_[local]_[hash:base64:5]',
                 },
                 'sass-loader'
               ),
@@ -507,6 +506,7 @@ module.exports = function(webpackEnv) {
                   sourceMap: isEnvProduction && shouldUseSourceMap,
                   modules: true,
                   getLocalIdent: getCSSModuleLocalIdent,
+                  localIdentName: '[name]_[local]_[hash:base64:5]',
                 },
                 'less-loader'
               ),

@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
+// import 'video-react/dist/video-react.css';
 import './index.css';
 import './common.less';
 import App from './App';

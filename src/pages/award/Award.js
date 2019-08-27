@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import styles from "./Award.less";
+import styles from "./Award.module.less";
 import fetch from 'isomorphic-fetch'
 import Api from "./../../utils/fetch"
 import Pop from "./Pop"
 import {Player, BigPlayButton,ControlBar, PlayToggle} from 'video-react'
 import Display from '../../component/Display';
-
+import { Button } from 'antd-mobile';
 
 
 
@@ -71,12 +71,16 @@ export default class Award extends Component {
         var videourl = this.state.videoUrl;
         return (
             <div className={styles.box} ref={this.myRef}>
-                <Player src={videourl} autoPlay={false} className={styles.videobox} aspectRatio="16:9" ref={player => {this.player=player}}>
+                <Player src={videourl} autoPlay={false}  aspectRatio="16:9" ref={player => {this.player=player}}>
                     <ControlBar autoHide={true} >
                         <PlayToggle />
                     </ControlBar>
                     <BigPlayButton position="center"/>
                 </Player>
+                <Button>Start</Button>
+                <Button type="warning" disabled>warning disabled</Button>
+                <Button loading>loading button</Button>
+                <Button type="primary">primary</Button>
             </div>
         )
     }
