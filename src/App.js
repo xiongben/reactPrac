@@ -11,7 +11,7 @@ import Display from "./component/Display";
 import calculate from "./logic/calculate"
 
 import routeConfig from "./Routers";
-import 'video-react/dist/video-react.css';
+// import 'video-react/dist/video-react.css';
 
 
 import {history} from './utils/history';
