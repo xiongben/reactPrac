@@ -25,7 +25,7 @@ export default class VideoComponent extends Component {
     handleStateChange(state, prevState) {
         // copy player state to this component's state
         if(state.paused !== prevState.paused ){
-            if(state.paused == false){
+            if(state.paused === false){
                 this.props.statusChange(this.props.videoId);
             }
             
