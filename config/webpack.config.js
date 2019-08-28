@@ -31,7 +31,7 @@ const postcssAspectRatioMini = require('postcss-aspect-ratio-mini');
 const postcssPxToViewport = require('postcss-px-to-viewport');
 const postcssWriteSvg = require('postcss-write-svg');
 const postcssCssnext = require('postcss-cssnext');
-// const postcssViewportUnits = require('postcss-viewport-units');
+const postcssViewportUnits = require('postcss-viewport-units');
 const cssnano = require('cssnano');
 
 
@@ -123,7 +123,9 @@ module.exports = function(webpackEnv) {
               utf8: false
             }),
             postcssCssnext({}),
-            // postcssViewportUnits({}),
+            postcssViewportUnits({
+              filterRule: rule => rule.nodes.findIndex(i => i.prop === 'content') === -1
+            }),
             cssnano({
               preset: "advanced", 
               autoprefixer: false, 
