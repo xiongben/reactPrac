@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import actions from "./../../actions/index"
-import styles from "./Login.less";
-import Toast from "./../../component/Toast";
+import styles from "./Login.module.less";
+import { Flex, InputItem, List,WhiteSpace } from 'antd-mobile';
+
 import Api from "./../../utils/fetch";
 class Login extends Component {
     constructor(props) {
@@ -13,18 +14,11 @@ class Login extends Component {
             pass:null,
             warnText:null,
         }
-        
-         
     }
     componentDidMount() {
     //    this.testpost();
     }
-    // handleClick = (data,e) => {
-    //     this.child.changeShowStatus();
-    //     this.setState({
-    //         detailData:data
-    //     });
-    // }
+   
     getData = () => {
         var params = { userId: this.state.userId, ownedBadgeWall:false, uid:this.state.userId};
         var reqUrl = "/reward/badges/get-summary";
@@ -40,46 +34,32 @@ class Login extends Component {
             console.log(res);
         })
     }
-    
-    onRef = (ref) => {
-        this.toast = ref;
-    }
-    set = (e) => {
-        let {name,value} = e.target;
-        this.setState({
-           [`${name}`] : value
-        })
-    }
-    submit = () => {
-        // this.props.history.push('/badge');
-        // console.log("test");
-        
-        let {name,pass} = this.state;
-        if(name == null || pass == null){
-            this.toast.changeShowStatus("can not be null!");
-        }else{
-            // let params = {name,pass};
-            let params = {id:1};
-            var res = this.props.loginSubmit(params);
-        }
+    handleClick = () => {
+        this.inputRef.focus();
     }
     
     render() {
-        var arrlist = this.state.dataArr;
-        var detail = this.state.detailData;
-        var testnum = this.props.testnum;
-        var text = this.props.text;
-        // console.log(this.props);
         var {increment,decrement,incrementAsync} = this.props;
-        var warnText = "ddddddd";
         return (
-            <div className={styles.loginBox}>
-                <p className={styles.loginTitle}>登录</p>
-                <input type="text" className={styles.userAdmin} onChange={(e)=>{this.set(e)}} name="name" placeholder="输入用户名"/>
-                <input type="text" className={styles.userAdmin} onChange={(e)=>{this.set(e)}} name="pass" placeholder="输入密码"/>
-                <p className={styles.warnText}>格式为数字加字母</p>
-                <button className={styles.submitBtn} onClick={this.submit}>确定</button>
-                <Toast text={warnText} onref={this.onRef}/>
+            <div className={styles.loginpage}>
+               <Flex>
+                <List renderHeader={() => 'Register Acount'} className={styles.regisList}>
+                        
+                        <InputItem
+                            type="email"
+                            placeholder=""
+                        >Email</InputItem>
+                        <InputItem
+                            type="password"
+                            placeholder=""
+                        >Password</InputItem>
+                        <InputItem
+                            type="password"
+                            placeholder=""
+                        >Password Again</InputItem>
+                    </List>
+                    <WhiteSpace />
+               </Flex>
             </div>
             )
         }
