@@ -28,7 +28,7 @@ const middlewares = [sagaMiddleware];
 
 const enhancer = compose(
   applyMiddleware.apply(null, middlewares),
-  window.devToolsExtension ? window.devToolsExtension() : f => f
+  // window.devToolsExtension ? window.devToolsExtension() : f => f
 );
 
 

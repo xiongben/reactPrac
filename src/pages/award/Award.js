@@ -113,10 +113,16 @@ export default class Award extends Component {
       }
     }
 
+
+    tt = ()=>{
+        console.log("zhangting")
+    }
+
     render(){
         var listData = this.state.listData;
         var detailData = this.state.detail;
         const { initData, show } = this.state;
+        var url = "https://cdn.moji.com/websrc/video/summer20190515.mp4";
         const menuEl = (
             <Menu
               className="single-foo-menu"
