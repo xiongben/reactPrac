@@ -4,7 +4,7 @@ import fetch from 'isomorphic-fetch'
 import Api from "./../../utils/fetch"
 import Pop from "./Pop"
 import {Player, BigPlayButton,ControlBar, PlayToggle} from 'video-react'
-import Display from '../../component/Display';
+
 import { Menu, ActivityIndicator, NavBar} from 'antd-mobile';
 import VideoComponent from './VideoComponent';
 

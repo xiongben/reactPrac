@@ -10,7 +10,6 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware,compose, combineReducers } from 'redux';
 // import createLogger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
-import fetch from 'isomorphic-fetch';
 import reducer from "./reduces/index";
 
 
@@ -32,53 +31,10 @@ const enhancer = compose(
 );
 
 
-
-const Counter = ({value, onIncrement, onDecrement, onIncrementAsync})=> (
-    <div>
-      <h1>{value}</h1>
-      <button onClick={onIncrement}>+</button>
-      <button onClick={onDecrement}>-</button>
-      <button onClick={onIncrementAsync}>+</button>
-    </div>
-  )
-  
-  
-  
-  
   const store = createStore(reducer,enhancer);
   sagaMiddleware.run(rootSaga);
   
   
-//   let actions = {
-//     add_testnum : ()=>{
-//         return (dispatch) => {
-//             dispatch({ type: 'INCREMENT'})
-//         }
-//     }
-    
-// }
-  
-
-  // const render = () => {ReactDOM.render(
-  //   <Provider store={store}>
-  //         <div className="App">
-  //           <header className="App-header">
-  //             <p>
-  //               Edit <code>src/App.js</code> and save to reload.
-  //             </p>
-  //           </header>
-  //           <Counter
-  //             value={store.getState().testnum}
-  //             onIncrement={()=>store.dispatch({type:'INCREMENT'})}
-  //             onDecrement={()=>store.dispatch({type:'DECREMENT'})}
-  //             onIncrementAsync={()=>store.dispatch({type:'INCREMENT_ASYNC'})}
-  //           />
-  //         </div>
-  //     </Provider>,
-  //     document.getElementById('root')
-  // )}
-
-
   const render = () => {ReactDOM.render(
       <Provider store={store}>
           <App></App>
