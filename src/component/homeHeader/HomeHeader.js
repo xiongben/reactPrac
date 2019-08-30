@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from "./HomeHeader.module.less";
 import { Menu, ActivityIndicator, NavBar } from 'antd-mobile';
 import './HomeHeader.less';
+import classNames from 'classnames';
 
 const data = [
     {
@@ -104,11 +105,14 @@ export default class HomeHeader extends Component {
         });
         // mock for async data loading
         if (!this.state.initData) {
-          setTimeout(() => {
             this.setState({
-              initData: data,
+                initData: data,
             });
-          }, 500);
+        //   setTimeout(() => {
+        //     this.setState({
+        //       initData: data,
+        //     });
+        //   }, 500);
         }
       }
     
@@ -134,8 +138,10 @@ export default class HomeHeader extends Component {
             <ActivityIndicator size="large" />
           </div>
         );
+        var headerShowClass = show ? 'menu-active' : '';
         return (
-          <div className={show ? 'menu-active' : ''}>
+        //   <div className={show ? 'menu-active' : ''}>
+        <div className={classNames({'menu-active':show},'headerClass')}>
             <div>
               <NavBar
                 leftContent="Menu"

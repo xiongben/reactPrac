@@ -137,6 +137,7 @@
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-polyfill": "^6.26.0",
     "big.js": "^5.2.2",
+    "classnames": "^2.2.6",
     "cssnano-preset-advanced": "^4.0.7",
     "isomorphic-fetch": "^2.2.1",
     "less": "^3.9.0",
