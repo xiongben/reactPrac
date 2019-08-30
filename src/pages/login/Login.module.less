@@ -1,9 +1,68 @@
+
+.loginBox{
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
 .loginpage{
     width: 100%;
-    height: 100vh;
-    background: #fff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
 }
-.regisList{
+.loginBack{
     width: 100%;
-    font-size: 12px;
+    height: 100vh;
+    background: url(./../../static/login.jpg) center;
+    filter: blur(20px);
+    position: absolute;
+    left:0;
+    top:0;
+    z-index: 1;
+}
+
+.loginTitle{
+  width: 100%;
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+//   background: yellow;
+  font-size: 34px;
+  font-weight: bolder;
+  margin-top: 20px;
+  color: #fff;
+}
+.loginRemaind{
+  color: #fff;
+}
+.inputbox{
+  border: none;
+  border: 1px solid rgb(133, 130, 130);
+  border-radius: 17px;
+  width: 280px;
+  height: 34px;
+  margin-top: 15px;
+  background: #fff;
+  text-align: center;
+  font-size: 16px;
+  color: rgb(126, 122, 122);
+}
+.submitBtn{
+  border:none;
+  border-radius: 17px;
+  width: 280px;
+  height: 34px;
+  background: rgb(230, 93, 93);
+  color: #fff;
+  margin-top:20px;
+  font-size: 16px;
+}
+.forgotText{
+  color: rgb(230, 93, 93);
+  text-align: center;
 }

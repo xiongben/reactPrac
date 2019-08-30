@@ -3,12 +3,14 @@ import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import actions from "./../../actions/index"
 import styles from "./Login.module.less";
+import langText from "./../../utils/langText";
 import { Flex, InputItem, List,WhiteSpace } from 'antd-mobile';
 
 import Api from "./../../utils/fetch";
 class Login extends Component {
     constructor(props) {
         super(props);
+        this.lang="en";
         this.state = {
             name:null,
             pass:null,
@@ -39,27 +41,28 @@ class Login extends Component {
     }
     
     render() {
+        var lang = this.lang;
         var {increment,decrement,incrementAsync} = this.props;
         return (
-            <div className={styles.loginpage}>
-               <Flex>
-                <List renderHeader={() => 'Register Acount'} className={styles.regisList}>
-                        
-                        <InputItem
-                            type="email"
-                            placeholder=""
-                        >Email</InputItem>
-                        <InputItem
-                            type="password"
-                            placeholder=""
-                        >Password</InputItem>
-                        <InputItem
-                            type="password"
-                            placeholder=""
-                        >Password Again</InputItem>
-                    </List>
-                    <WhiteSpace />
-               </Flex>
+            <div className={styles.loginBox}>
+                <div className={styles.loginBack}></div>
+                <div className={styles.loginpage} style={{display:'none'}}>
+                    <div className={styles.loginTitle}>{langText.loginPage[lang].loginTitle}</div>
+                    <p className={styles.loginRemaind}>{langText.loginPage[lang].loginWarn}</p>
+                    <input type="email" className={styles.inputbox} placeholder={langText.loginPage[lang].loginEmail}/>
+                    <input type="password" className={styles.inputbox} placeholder={langText.loginPage[lang].loginPass}/>
+                    <button className={styles.submitBtn}>{langText.loginPage[lang].loginBtnText}</button>
+                    <p className={styles.forgotText}>{langText.loginPage[lang].forgetText}</p>
+                </div>
+                <div className={styles.loginpage}>
+                    <div className={styles.loginTitle}>{langText.loginPage[lang].signUpTitle}</div>
+                    <p className={styles.loginRemaind}>{langText.loginPage[lang].signUpRemaind}</p>
+                    <input type="email" className={styles.inputbox} placeholder={langText.loginPage[lang].loginEmail}/>
+                    <input type="text" className={styles.inputbox} placeholder={langText.loginPage[lang].userName}/>
+                    <input type="password" className={styles.inputbox} placeholder={langText.loginPage[lang].loginPass}/>
+                    <button className={styles.submitBtn}>{langText.loginPage[lang].signUp}</button>
+                    <p className={styles.forgotText}>{langText.loginPage[lang].signUpWarn}</p>
+                </div>
             </div>
             )
         }
