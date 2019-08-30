@@ -109,28 +109,28 @@ module.exports = function(webpackEnv) {
               },
               stage: 3,
             }),
-            postcssAspectRatioMini({}),
-            postcssPxToViewport({ 
-              viewportWidth: 375, // (Number) The width of the viewport. 
-              viewportHeight: 667, // (Number) The height of the viewport. 
-              unitPrecision: 3, // (Number) The decimal numbers to allow the REM units to grow to. 
-              viewportUnit: 'vw', // (String) Expected units. 
-              selectorBlackList: ['.ignore', '.hairlines'], // (Array) The selectors to ignore and leave as px. 
-              minPixelValue: 1, // (Number) Set the minimum pixel value to replace. 
-              mediaQuery: false // (Boolean) Allow px to be converted in media queries. 
-            }),
-            postcssWriteSvg({
-              utf8: false
-            }),
-            postcssCssnext({}),
-            postcssViewportUnits({
-              filterRule: rule => rule.nodes.findIndex(i => i.prop === 'content') === -1
-            }),
-            cssnano({
-              preset: "advanced", 
-              autoprefixer: false, 
-              "postcss-zindex": false 
-            })
+            // postcssAspectRatioMini({}),
+            // postcssPxToViewport({ 
+            //   viewportWidth: 375, // (Number) The width of the viewport. 
+            //   viewportHeight: 667, // (Number) The height of the viewport. 
+            //   unitPrecision: 3, // (Number) The decimal numbers to allow the REM units to grow to. 
+            //   viewportUnit: 'vw', // (String) Expected units. 
+            //   selectorBlackList: ['.ignore', '.hairlines'], // (Array) The selectors to ignore and leave as px. 
+            //   minPixelValue: 1, // (Number) Set the minimum pixel value to replace. 
+            //   mediaQuery: false // (Boolean) Allow px to be converted in media queries. 
+            // }),
+            // postcssWriteSvg({
+            //   utf8: false
+            // }),
+            // postcssCssnext({}),
+            // postcssViewportUnits({
+            //   filterRule: rule => rule.nodes.findIndex(i => i.prop === 'content') === -1
+            // }),
+            // cssnano({
+            //   preset: "advanced", 
+            //   autoprefixer: false, 
+            //   "postcss-zindex": false 
+            // })
           ],
           sourceMap: isEnvProduction && shouldUseSourceMap,
         },
