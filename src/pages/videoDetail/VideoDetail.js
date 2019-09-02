@@ -1,10 +1,23 @@
 import React, { Component } from 'react';
 import styles from "./VideoDetail.module.less";
-import { Button } from 'antd-mobile';
+import { Button, Tabs, WhiteSpace, Badge } from 'antd-mobile';
 import {Player, BigPlayButton,ControlBar, PlayToggle} from 'video-react';
 import './../../component/homeHeader/HomeHeader';
 import HomeHeader from './../../component/homeHeader/HomeHeader';
 import KeywordArea from './../../component/keywordArea/KeywordArea';
+
+
+const tabs = [
+    { title: <Badge text={'3'}>First Tab</Badge> },
+    { title: <Badge text={'今日(20)'}>Second Tab</Badge> },
+    { title: <Badge dot>Third Tab</Badge> },
+  ];
+  
+const tabs2 = [
+    { title: 'First Tab', sub: '1' },
+    { title: 'Second Tab', sub: '2' },
+    { title: 'Third Tab', sub: '3' },
+  ];
 
 export default class VideoDetail extends Component {
     constructor(props){
@@ -49,9 +62,38 @@ export default class VideoDetail extends Component {
                     <div className={styles.videoName}>The classNames function takes any number of arguments which can</div>
                     <div className={styles.iconArea}>
                         <div className={styles.iconli}>
-                            <img/>
-                            <p>666</p>
+                            <img src={require('./../../static/watchicon.png')} alt="icon"/>
+                            <div>666</div>
                         </div>
+                        <div className={styles.iconli}>
+                            <img src={require('./../../static/good.png')} alt="icon"/>
+                            <div>666</div>
+                        </div>
+                        <div className={styles.iconli}>
+                            <img src={require('./../../static/nogood.png')} alt="icon"/>
+                            <div>666</div>
+                        </div>
+                        <div className={styles.iconli}>
+                            <img src={require('./../../static/addicon.png')} alt="icon"/>
+                            <div>666</div>
+                        </div>
+                    </div>
+                    <div className={styles.chatBox}>
+                    <Tabs tabs={tabs}
+                        initialPage={1}
+                        onChange={(tab, index) => { console.log('onChange', index, tab); }}
+                        onTabClick={(tab, index) => { console.log('onTabClick', index, tab); }}
+                        >
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '150px', backgroundColor: '#fff' }}>
+                            Content of first tab
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '150px', backgroundColor: '#fff' }}>
+                            Content of second tab
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '150px', backgroundColor: '#fff' }}>
+                            Content of third tab
+                        </div>
+                        </Tabs>
                     </div>
                 </div>
             </div>
