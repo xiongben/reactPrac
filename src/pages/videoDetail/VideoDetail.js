@@ -84,13 +84,13 @@ export default class VideoDetail extends Component {
                         onChange={(tab, index) => { console.log('onChange', index, tab); }}
                         onTabClick={(tab, index) => { console.log('onTabClick', index, tab); }}
                         >
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '150px', backgroundColor: '#fff' }}>
+                        <div className={styles.tabItem}>
                             Content of first tab
                         </div>
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '150px', backgroundColor: '#fff' }}>
+                        <div className={styles.tabItem}>
                             Content of second tab
                         </div>
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '150px', backgroundColor: '#fff' }}>
+                        <div className={styles.tabItem}>
                             Content of third tab
                         </div>
                         </Tabs>
