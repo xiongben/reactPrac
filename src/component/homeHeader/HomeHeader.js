@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styles from "./HomeHeader.module.less";
-import { Menu, ActivityIndicator, NavBar } from 'antd-mobile';
+import { Menu, ActivityIndicator, NavBar, Icon, SearchBar } from 'antd-mobile';
 import './HomeHeader.less';
 import classNames from 'classnames';
 
@@ -80,6 +80,7 @@ export default class HomeHeader extends Component {
         this.state = {
           initData: '',
           show: false,
+          showNav: true,
         };
       }
       onChange = (value) => {
@@ -121,6 +122,12 @@ export default class HomeHeader extends Component {
           show: false,
         });
       }
+
+      showSearchInput = () => {
+         this.setState({
+             showNav: !this.state.showNav
+         })
+      }
     
       render() {
         const { initData, show } = this.state;
@@ -139,22 +146,37 @@ export default class HomeHeader extends Component {
           </div>
         );
         var headerShowClass = show ? 'menu-active' : '';
+        var showNavBar = this.state.showNav ? '' : styles.hide;
+        var showSearch = this.state.showNav ? styles.hide : '';
         return (
-        //   <div className={show ? 'menu-active' : ''}>
-        <div className={classNames({'menu-active':show},'headerClass')}>
-            <div>
-              <NavBar
-                leftContent="Menu"
-                mode="light"
-                icon={<img src="https://gw.alipayobjects.com/zos/rmsportal/iXVHARNNlmdCGnwWxQPH.svg" className="am-icon am-icon-md" alt="" />}
-                onLeftClick={this.handleClick}
-                className="top-nav-bar"
-              >
-                Treaure
-              </NavBar>
+        <div className={styles.headerClass}>
+          <div className={show ? 'menu-active' : ''}>
+                <div>
+                <NavBar
+                    leftContent="Menu"
+                    mode="light"
+                    icon={<img src="https://gw.alipayobjects.com/zos/rmsportal/iXVHARNNlmdCGnwWxQPH.svg" className="am-icon am-icon-md" alt="" />}
+                    onLeftClick={this.handleClick}
+                    // className="top-nav-bar"
+                    className={classNames('top-nav-bar',showNavBar)}
+                    rightContent={[
+                        <Icon key="0" type="search" style={{ marginRight: '16px' }} onClick={this.showSearchInput}/>,
+                        // <Icon key="1" type="ellipsis" />,
+                      ]}
+                >
+                    Treaure
+                </NavBar>
+                </div>
+                {show ? initData ? menuEl : loadingEl : null}
+                {show ? <div className="menu-mask" onClick={this.onMaskClick} /> : null}
             </div>
-            {show ? initData ? menuEl : loadingEl : null}
-            {show ? <div className="menu-mask" onClick={this.onMaskClick} /> : null}
+            <SearchBar 
+            placeholder="Input keyword" 
+            ref={ref => this.autoFocusInst = ref} 
+            cancelText="Cancel" 
+            onCancel={this.showSearchInput}
+            className = {showSearch}
+            />
           </div>
         );
       }

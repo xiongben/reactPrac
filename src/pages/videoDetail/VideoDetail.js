@@ -4,7 +4,7 @@ import { Button } from 'antd-mobile';
 import {Player, BigPlayButton,ControlBar, PlayToggle} from 'video-react';
 import './../../component/homeHeader/HomeHeader';
 import HomeHeader from './../../component/homeHeader/HomeHeader';
-
+import KeywordArea from './../../component/keywordArea/KeywordArea';
 
 export default class VideoDetail extends Component {
     constructor(props){
@@ -38,12 +38,22 @@ export default class VideoDetail extends Component {
         return(
             <div className={styles.box}>
                 <HomeHeader/>
+                <KeywordArea/>
                 <Player src={videourl} autoPlay={false}  aspectRatio="16:9" ref={player => {this.player=player}} >
                     <ControlBar autoHide={true} >
                         <PlayToggle />
                     </ControlBar>
                     <BigPlayButton position="center"/>
                 </Player>
+                <div className={styles.infoDetail}>
+                    <div className={styles.videoName}>The classNames function takes any number of arguments which can</div>
+                    <div className={styles.iconArea}>
+                        <div className={styles.iconli}>
+                            <img/>
+                            <p>666</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }
