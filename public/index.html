@@ -11,6 +11,9 @@
   <meta name="viewport"
     content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
   <meta name="theme-color" content="#000000" />
+  <!-- google登录 -->
+  <meta name="google-signin-scope" content="profile email">
+  <meta name="google-signin-client_id" content="210356647672-c8fvqjnf22qjanbk29adcpv2q3sc37mp.apps.googleusercontent.com">
   <!--
       manifest.json provides metadata used when your web app is added to the
       homescreen on Android. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -28,8 +31,10 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
   <title>React</title>
+  <!-- google登录 -->
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
   <script
-    src="//g.alicdn.com/fdilab/lib3rd/viewport-units-buggyfill/0.6.2/??viewport-units-buggyfill.hacks.min.js,viewport-units-buggyfill.min.js"></script>
+    src="http://g.alicdn.com/fdilab/lib3rd/viewport-units-buggyfill/0.6.2/??viewport-units-buggyfill.hacks.min.js,viewport-units-buggyfill.min.js"></script>
   <script src="https://as.alipayobjects.com/g/component/fastclick/1.0.6/fastclick.js"></script>
   <script>
     if ('addEventListener' in document) {

@@ -6,6 +6,7 @@ import styles from "./Login.module.less";
 import langText from "./../../utils/langText";
 import { Flex, InputItem, List,WhiteSpace } from 'antd-mobile';
 
+
 import Api from "./../../utils/fetch";
 class Login extends Component {
     constructor(props) {
@@ -18,6 +19,16 @@ class Login extends Component {
         }
     }
     componentDidMount() {
+        // console.log(this.props);
+        gapi.signin2.render('g-signin2', {
+            'scope': 'profile email',
+            'width': 200,
+            'height': 50,
+            'longtitle': true,
+            'theme': 'dark',
+            'onsuccess': onSignIn,
+            'onfailure': onFailure,
+        });  
     //    this.testpost();
     }
    
@@ -39,7 +50,9 @@ class Login extends Component {
     handleClick = () => {
         this.inputRef.focus();
     }
-    
+    signUp = () => {
+        this.props.history.push('/videoDetail');
+    }
     render() {
         var lang = this.lang;
         var {increment,decrement,incrementAsync} = this.props;
@@ -60,13 +73,33 @@ class Login extends Component {
                     <input type="email" className={styles.inputbox} placeholder={langText.loginPage[lang].loginEmail}/>
                     <input type="text" className={styles.inputbox} placeholder={langText.loginPage[lang].userName}/>
                     <input type="password" className={styles.inputbox} placeholder={langText.loginPage[lang].loginPass}/>
-                    <button className={styles.submitBtn}>{langText.loginPage[lang].signUp}</button>
+                    <button className={styles.submitBtn} onClick={this.signUp}>{langText.loginPage[lang].signUp}</button>
                     <p className={styles.forgotText}>{langText.loginPage[lang].signUpWarn}</p>
+                    <div className="g-signin2"  data-theme="dark"></div>
                 </div>
             </div>
             )
         }
 }
+
+function onSignIn(googleUser) {
+    // Useful data for your client-side scripts:
+    var profile = googleUser.getBasicProfile();
+    console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+    console.log('Full Name: ' + profile.getName());
+    console.log('Given Name: ' + profile.getGivenName());
+    console.log('Family Name: ' + profile.getFamilyName());
+    console.log("Image URL: " + profile.getImageUrl());
+    console.log("Email: " + profile.getEmail());
+
+    // The ID token you need to pass to your backend:
+    var id_token = googleUser.getAuthResponse().id_token;
+    console.log("ID Token: " + id_token);
+  }
+
+  function onFailure(error) {
+    console.log(error);
+  }
 
 function mapStateToProps(state){
     const {testnum,text} = state;

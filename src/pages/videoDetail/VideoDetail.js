@@ -5,7 +5,7 @@ import {Player, BigPlayButton,ControlBar, PlayToggle} from 'video-react';
 import './../../component/homeHeader/HomeHeader';
 import HomeHeader from './../../component/homeHeader/HomeHeader';
 import KeywordArea from './../../component/keywordArea/KeywordArea';
-
+import VideoItem from './../../component/videoItem/VideoItem';
 
 const tabs = [
     { title: <Badge text={'3'}>First Tab</Badge> },
@@ -80,12 +80,18 @@ export default class VideoDetail extends Component {
                     </div>
                     <div className={styles.chatBox}>
                     <Tabs tabs={tabs}
-                        initialPage={1}
+                        initialPage={0}
                         onChange={(tab, index) => { console.log('onChange', index, tab); }}
                         onTabClick={(tab, index) => { console.log('onTabClick', index, tab); }}
                         >
                         <div className={styles.tabItem}>
-                            Content of first tab
+                            <div className={styles.videoItemArea}>
+                               <VideoItem/>
+                               <VideoItem/>
+                               <VideoItem/>
+                               <VideoItem/>
+                               <VideoItem/>
+                            </div>
                         </div>
                         <div className={styles.tabItem}>
                             Content of second tab
