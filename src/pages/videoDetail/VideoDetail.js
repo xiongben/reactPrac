@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styles from "./VideoDetail.module.less";
-import { Button, Tabs, WhiteSpace, Badge } from 'antd-mobile';
+import { Button, Tabs, WhiteSpace, Badge, NavBar, Icon } from 'antd-mobile';
 import {Player, BigPlayButton,ControlBar, PlayToggle} from 'video-react';
 import './../../component/homeHeader/HomeHeader';
 import HomeHeader from './../../component/homeHeader/HomeHeader';
@@ -27,6 +27,7 @@ export default class VideoDetail extends Component {
        this.state={
         videoUrl : "https://cdn.moji.com/websrc/video/summer20190515.mp4",
        };
+       console.log(window.innerWidth,window.innerHeight);
     }
     componentDidMount(){
         // this.props.onref(this,this.props.videoId);
@@ -50,9 +51,18 @@ export default class VideoDetail extends Component {
         var videourl = this.state.videoUrl;
         return(
             <div className={styles.box}>
-                <HomeHeader/>
-                <KeywordArea/>
-                <Player src={videourl} autoPlay={false}  aspectRatio="16:9" ref={player => {this.player=player}} >
+                <NavBar
+                className={styles.header}
+                mode="light"
+                icon={<Icon type="left" />}
+                onLeftClick={() => console.log('onLeftClick')}
+                rightContent={[
+                    // <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
+                    <Icon key="1" type="ellipsis" />,
+                ]}
+                >Video Detail</NavBar>
+                <div className={styles.headerArea}></div>
+                <Player src={videourl} autoPlay={false} playsInline={true} aspectRatio="16:9" ref={player => {this.player=player}} className={styles.videoArea}>
                     <ControlBar autoHide={true} >
                         <PlayToggle />
                     </ControlBar>

@@ -16,6 +16,7 @@ const Award = asyncComponent(() => import("./pages/award/Award"));
 const Login = asyncComponent(() => import("./pages/login/Login"));
 const WechatList = asyncComponent(() => import("./pages/wechat/UserList"));
 const VideoDetail = asyncComponent(() => import("./pages/videoDetail/VideoDetail"));
+const Home = asyncComponent(() => import("./pages/home/Home"));
 
 class App extends Component {
   state = {
@@ -35,6 +36,7 @@ class App extends Component {
           <Route  path="/login" component={Login} />
           <Route  path="/wechatlist" component={WechatList} />
           <Route  path="/videoDetail" component={VideoDetail} />
+          <Route  path="/home" component={Home} />
           </div>
       </Router>
     );
