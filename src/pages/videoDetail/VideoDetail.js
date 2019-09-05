@@ -31,6 +31,7 @@ export default class VideoDetail extends Component {
     }
     componentDidMount(){
         // this.props.onref(this,this.props.videoId);
+        console.log(this.props.history);
     }
     componentDidUpdate(){
 
@@ -55,10 +56,10 @@ export default class VideoDetail extends Component {
                 className={styles.header}
                 mode="light"
                 icon={<Icon type="left" />}
-                onLeftClick={() => console.log('onLeftClick')}
+                onLeftClick={() => this.props.history.goBack()}
                 rightContent={[
                     // <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
-                    <Icon key="1" type="ellipsis" />,
+                    <Icon key="1" type="ellipsis" onClick={()=>{this.props.history.push('/home')}}/>,
                 ]}
                 >Video Detail</NavBar>
                 <div className={styles.headerArea}></div>

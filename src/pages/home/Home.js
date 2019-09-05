@@ -24,8 +24,11 @@ export default class Home extends Component {
         return(
             <div className={styles.homePage}>
                <HomeHeader/>
+               <div className={styles.headerArea}></div>
                <KeywordArea/>
                <div className={styles.videolist}>
+                  <VideoItemBig/>
+                  <VideoItemBig/>
                   <VideoItemBig/>
                   <VideoItemBig/>
                </div>

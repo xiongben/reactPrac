@@ -11,12 +11,17 @@ export default class KeywordArea extends Component {
         }
     }
 
+    componentWillReceiveProps(){
+       console.log("888888")
+    }
+
+    onchange = (select,index) => {
+        console.log(select,index);
+    }
+
     tagItem= (data,index) => {
-        onchange = (select) => {
-            console.log(select,data);
-        }
         return(
-            <Tag  className={styles.tagItem}  key={index} onChange={onchange}>
+            <Tag  className={styles.tagItem}  key={index} onChange={(value)=>{this.onchange(value,index)}}>
                 {data}
             </Tag>
         )

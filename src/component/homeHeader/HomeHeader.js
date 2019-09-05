@@ -3,6 +3,7 @@ import styles from "./HomeHeader.module.less";
 import { Menu, ActivityIndicator, NavBar, Icon, SearchBar } from 'antd-mobile';
 import './HomeHeader.less';
 import classNames from 'classnames';
+import {history} from './../../utils/history';
 
 const data = [
     {
@@ -72,6 +73,17 @@ const data = [
         },
       ],
     },
+    {
+      value: '4',
+      label: 'My Page',
+      isLeaf: true,
+      children: [
+        {
+          label: 'to my page',
+          value: '1',
+        },
+      ],
+    },
   ];
 
 export default class HomeHeader extends Component {
@@ -84,6 +96,7 @@ export default class HomeHeader extends Component {
         };
       }
       onChange = (value) => {
+        
         let label = '';
         data.forEach((dataItem) => {
           if (dataItem.value === value[0]) {
@@ -98,6 +111,9 @@ export default class HomeHeader extends Component {
           }
         });
         console.log(label);
+        if(label === "My Page"){
+            history.push('./mypage');
+        }
       }
       handleClick = (e) => {
         e.preventDefault(); // Fix event propagation on Android
