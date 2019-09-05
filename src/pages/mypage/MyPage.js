@@ -26,15 +26,7 @@ export default class MyPage extends Component {
         console.log(select,index);
     }
 
-    infoItem = (data,index) => {
-        var imgUrl = "./../../static/icon/" + data.iconName
-        return(
-            <div className={styles.infoItem} key={index}>
-                <img alt="icon" className={styles.itemIcon} src={require(imgUrl)}/>
-                <div className={styles.itemText}>{data.text}</div>
-            </div>
-        )
-    }
+    
 
     
     render(){
@@ -54,8 +46,27 @@ export default class MyPage extends Component {
                 <div className={styles.headerArea}></div>
                 <div className={styles.userInfoArea}>
                     <div className={styles.infoItem}>
-                        <img alt="icon" className={styles.itemIcon} src={require('./../../static/icon/icon_certificate_fil.png')}/>
-                        <div className={styles.itemText}>mo ha mo de.ss</div>
+                        <img alt="icon" className={styles.itemIcon} src={require('./../../static/icon/icon_principal.png')}/>
+                        <div className={styles.itemText}>
+                            <span>Jack</span>
+                            <img alt="vip" src={require('./../../static/icon/vip_01.png')} className={styles.vipicon}/>
+                        </div>
+                    </div>
+                    <div className={styles.infoItem}>
+                        <img alt="icon" className={styles.itemIcon} src={require('./../../static/icon/icon_safety_fill.png')}/>
+                        <div className={styles.itemText}>Web Policy</div>
+                    </div>
+                    <div className={styles.infoItem}>
+                        <img alt="icon" className={styles.itemIcon} src={require('./../../static/icon/money.png')}/>
+                        <div className={styles.itemText}>Topup</div>
+                    </div>
+                    <div className={styles.infoItem}>
+                        <img alt="icon" className={styles.itemIcon} src={require('./../../static/icon/icon_file.png')}/>
+                        <div className={styles.itemText}>My Collection</div>
+                    </div>
+                    <div className={styles.infoItem}>
+                        <img alt="icon" className={styles.itemIcon} src={require('./../../static/icon/icon_dmail.png')}/>
+                        <div className={styles.itemText}>Connect Us</div>
                     </div>
                 </div>
             </div>
