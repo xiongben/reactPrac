@@ -7,7 +7,14 @@ export default class MyPage extends Component {
     constructor(props){
         super(props);
         this.state={
-            keyArr: ["eeee","ffff","tttt","dfe gg", "my name is","hahaha", "8888", "fgfg gg", "opop"]
+            keyArr: [
+               {iconName: "icon_principal.png", text: "mohamode.dd"},
+               {iconName: "icon_safety_fill.png", text: "Policy"},
+               {iconName: "money.png", text: "VIP Membership"},
+               {iconName: "icon_file.png", text: "Your File"},
+               {iconName: "icon_dmail.png", text: "Email Us"},
+               {iconName: "icon_service.png", text: "Connect Us"},
+            ],
         }
     }
 
@@ -19,7 +26,15 @@ export default class MyPage extends Component {
         console.log(select,index);
     }
 
-    
+    infoItem = (data,index) => {
+        var imgUrl = "./../../static/icon/" + data.iconName
+        return(
+            <div className={styles.infoItem} key={index}>
+                <img alt="icon" className={styles.itemIcon} src={require(imgUrl)}/>
+                <div className={styles.itemText}>{data.text}</div>
+            </div>
+        )
+    }
 
     
     render(){
@@ -37,6 +52,12 @@ export default class MyPage extends Component {
                 ]}
                 >My Account</NavBar>
                 <div className={styles.headerArea}></div>
+                <div className={styles.userInfoArea}>
+                    <div className={styles.infoItem}>
+                        <img alt="icon" className={styles.itemIcon} src={require('./../../static/icon/icon_certificate_fil.png')}/>
+                        <div className={styles.itemText}>mo ha mo de.ss</div>
+                    </div>
+                </div>
             </div>
         )
     }
