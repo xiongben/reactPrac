@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import CSSModules from 'react-css-modules';
 import logo from './logo.svg';
 import './App.css';
-import {Router, Route, Link} from "react-router-dom";
+import {Router, Route, Link, Redirect} from "react-router-dom";
 
 // import 'video-react/dist/video-react.css';
 
@@ -39,6 +39,7 @@ class App extends Component {
           <Route  path="/videoDetail" component={VideoDetail} />
           <Route  path="/home" component={Home} />
           <Route  path="/mypage" component={MyPage} />
+          
           </div>
       </Router>
     );

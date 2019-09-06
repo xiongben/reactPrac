@@ -54,7 +54,7 @@ export default class VideoDetail extends Component {
             <div className={styles.box}>
                 <NavBar
                 className={styles.header}
-                mode="light"
+                mode="dark"
                 icon={<Icon type="left" />}
                 onLeftClick={() => this.props.history.goBack()}
                 rightContent={[

@@ -35,7 +35,7 @@ export default class MyPage extends Component {
             <div className={styles.mypagebox}>
                 <NavBar
                 className={styles.header}
-                mode="light"
+                mode="dark"
                 icon={<Icon type="left" />}
                 onLeftClick={() => this.props.history.goBack()}
                 rightContent={[
