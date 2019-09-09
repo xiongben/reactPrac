@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from "./MyPage.module.less";
 import { Badge, NavBar, Icon } from 'antd-mobile';
 import classNames from 'classnames';
+import {history} from './../../utils/history';
 
 export default class MyPage extends Component {
     constructor(props){
@@ -26,7 +27,9 @@ export default class MyPage extends Component {
         console.log(select,index);
     }
 
-    
+    toOtherPage = (pagename) => {
+        history.push('/videolist');
+    }
 
     
     render(){
@@ -60,7 +63,7 @@ export default class MyPage extends Component {
                         <img alt="icon" className={styles.itemIcon} src={require('./../../static/icon/money.png')}/>
                         <div className={styles.itemText}>Topup</div>
                     </div>
-                    <div className={styles.infoItem}>
+                    <div className={styles.infoItem} onClick={()=>{this.toOtherPage('collection')}}>
                         <img alt="icon" className={styles.itemIcon} src={require('./../../static/icon/icon_file.png')}/>
                         <div className={styles.itemText}>My Collection</div>
                     </div>
