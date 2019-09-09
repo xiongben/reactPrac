@@ -9,7 +9,7 @@ import KeywordArea from './../../component/keywordArea/KeywordArea';
 import VideoItemBig from './../../component/videoItem/VideoItemBig';
 
 
-const locale = {
+ const locale = {
     prevText: 'Prev',
     nextText: 'Next',
   };
@@ -63,6 +63,9 @@ const locale = {
     }
     sectionIDs = [...sectionIDs];
     rowIDs = [...rowIDs];
+    // console.log(dataBlobs);
+    // console.log(sectionIDs);
+    // console.log(rowIDs);
   }
 
 export default class Home extends Component {
@@ -91,6 +94,8 @@ export default class Home extends Component {
     
         const hei = document.documentElement.clientHeight - ReactDOM.findDOMNode(this.lv).parentNode.offsetTop;
         // simulate initial Ajax
+        sectionIDs = [];
+        rowIDs = [];
         setTimeout(() => {
           genData();
           this.setState({
@@ -132,64 +137,70 @@ export default class Home extends Component {
           <div
             key={`${sectionID}-${rowID}`}
             style={{
-              backgroundColor: '#F5F5F9',
+              backgroundColor: 'yellow',
               height: 8,
-              borderTop: '1px solid #ECECED',
-              borderBottom: '1px solid #ECECED',
+              borderTop: '1px solid red',
+              borderBottom: '1px solid red',
             }}
           />
         );
-        let index = data.length - 1;
+        let index = data.length - 1; //2
         const row = (rowData, sectionID, rowID) => {
           if (index < 0) {
             index = data.length - 1;
           }
           const obj = data[index--];
           return (
-            <div key={rowID} style={{ padding: '0 15px' }}>
-              <div
-                style={{
-                  lineHeight: '50px',
-                  color: '#888',
-                  fontSize: 18,
-                  borderBottom: '1px solid #F6F6F6',
-                }}
-              >{obj.title}</div>
-              <div style={{ display: '-webkit-box', display: 'flex', padding: '15px 0' }}>
-                <img style={{ height: '64px', marginRight: '15px' }} src={obj.img} alt="" />
-                <div style={{ lineHeight: 1 }}>
-                  <div style={{ marginBottom: '8px', fontWeight: 'bold' }}>{obj.des}</div>
-                  <div><span style={{ fontSize: '30px', color: '#FF6E27' }}>35</span>¥ {rowID}</div>
-                </div>
-              </div>
-            </div>
+              <VideoItemBig key={rowID}/>
+            // <div key={rowID} style={{ padding: '0 15px' }}>
+            //   <div
+            //     style={{
+            //       lineHeight: '50px',
+            //       color: '#888',
+            //       fontSize: 18,
+            //       borderBottom: '1px solid #F6F6F6',
+            //     }}
+            //   >{obj.title}</div>
+            //   <div style={{ display: '-webkit-box', display: 'flex', padding: '15px 0' }}>
+            //     <img style={{ height: '64px', marginRight: '15px' }} src={obj.img} alt="" />
+            //     <div style={{ lineHeight: 1 }}>
+            //       <div style={{ marginBottom: '8px', fontWeight: 'bold' }}>{obj.des}</div>
+            //       <div><span style={{ fontSize: '30px', color: '#FF6E27' }}>35</span>¥ {rowID}</div>
+            //     </div>
+            //   </div>
+            // </div>
           );
         };
     
         return (
-          <ListView
-            ref={el => this.lv = el}
-            dataSource={this.state.dataSource}
-            renderHeader={() => <span>header</span>}
-            renderFooter={() => (<div style={{ padding: 30, textAlign: 'center' }}>
-              {this.state.isLoading ? 'Loading...' : 'Loaded'}
-            </div>)}
-            renderSectionHeader={sectionData => (
-              <div>{`Task ${sectionData.split(' ')[1]}`}</div>
-            )}
-            renderBodyComponent={() => <MyBody />}
-            renderRow={row}
-            renderSeparator={separator}
-            style={{
-              height: this.state.height,
-              overflow: 'auto',
-            }}
-            pageSize={4}
-            onScroll={() => { console.log('scroll'); }}
-            scrollRenderAheadDistance={500}
-            onEndReached={this.onEndReached}
-            onEndReachedThreshold={10}
-          />
+          <div className={styles.homepage}>
+             <HomeHeader/>
+             <div className={styles.headerArea}></div>
+             <KeywordArea/>
+             <ListView
+                ref={el => this.lv = el}
+                dataSource={this.state.dataSource}
+                // renderHeader={() => <span>header</span>}
+                renderFooter={() => (<div style={{ padding: 30, textAlign: 'center' }}>
+                {this.state.isLoading ? 'Loading...' : 'Loaded'}
+                </div>)}
+                // renderSectionHeader={sectionData => (
+                //   <div>{`Task ${sectionData.split(' ')[1]}`}</div>
+                // )}
+                renderBodyComponent={() => <MyBody />}
+                renderRow={row}
+                // renderSeparator={separator}
+                style={{
+                height: this.state.height,
+                overflow: 'auto',
+                }}
+                pageSize={4}
+                onScroll={() => { console.log('scroll'); }}
+                scrollRenderAheadDistance={500}
+                onEndReached={this.onEndReached}
+                onEndReachedThreshold={10}
+            />
+          </div>
         );
       }
 }
