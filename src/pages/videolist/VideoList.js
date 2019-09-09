@@ -15,7 +15,8 @@ export default class VideoList extends Component {
     }
 
     componentDidMount(){
-        console.log(history);
+        let data = this.props.location.state;
+        console.log(data);
     }
 
     componentWillReceiveProps(){

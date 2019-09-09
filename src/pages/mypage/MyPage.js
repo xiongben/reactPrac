@@ -28,7 +28,12 @@ export default class MyPage extends Component {
     }
 
     toOtherPage = (pagename) => {
-        history.push('/videolist');
+        let data = {id:3,name:'xb',age:27};
+        let path = {
+            pathname: '/videolist',
+            state: data,
+        }
+        history.push(path);
     }
 
     
