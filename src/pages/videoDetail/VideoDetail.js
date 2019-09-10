@@ -6,6 +6,7 @@ import './../../component/homeHeader/HomeHeader';
 import HomeHeader from './../../component/homeHeader/HomeHeader';
 import KeywordArea from './../../component/keywordArea/KeywordArea';
 import VideoItem from './../../component/videoItem/VideoItem';
+import Message from './Message';
 
 const tabs = [
     { title: <Badge text={'3'}>First Tab</Badge> },
@@ -96,6 +97,11 @@ export default class VideoDetail extends Component {
                         onTabClick={(tab, index) => { console.log('onTabClick', index, tab); }}
                         >
                         <div className={styles.tabItem}>
+                            <div className={styles.messageArea}>
+                               <Message/>
+                            </div>
+                        </div>
+                        <div className={styles.tabItem}>
                             <div className={styles.videoItemArea}>
                                <VideoItem/>
                                <VideoItem/>
@@ -103,9 +109,6 @@ export default class VideoDetail extends Component {
                                <VideoItem/>
                                <VideoItem/>
                             </div>
-                        </div>
-                        <div className={styles.tabItem}>
-                            Content of second tab
                         </div>
                         <div className={styles.tabItem}>
                             Content of third tab
