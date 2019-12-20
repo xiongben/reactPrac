@@ -23,13 +23,17 @@ export default createActions({
         const testText = text;
         return {text:testText};
     },
+    'INCREMENT_MAX': (text) => {
+        const testText = text;
+        return {text:testText};
+    },
     'DECREMENT': () => {
         const testText = "这是减法运算";
         return testText;
     },
-    'INCREMENT_ASYNC': () => {
-        const testText = "这是异步加法运算";
-        return testText;
+    'INCREMENT_ASYNC': (text) => {
+        const testText = text;
+        return {text:testText};
     },
     'LOGIN_SUBMIT': (params) => {
         return params;
@@ -37,5 +41,11 @@ export default createActions({
     'LOGIN_SUCCESS': (data) => {
         return data;
     },
+    'TESTOB_A': ()=> {
+        return {text:"AAAAA"};
+    },
+    'TESTOB_B': ()=> {
+        return {text:"BBBBB"};
+    }
 });
 

@@ -2,7 +2,7 @@
   "name": "react-practice",
   "version": "0.1.0",
   "private": true,
-  "homepage":".",
+  "homepage": ".",
   "dependencies": {
     "@babel/core": "7.1.6",
     "@svgr/webpack": "2.4.1",
@@ -153,7 +153,9 @@
     "react-router-redux": "^4.0.8",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
+    "redux-observable": "^1.2.0",
     "redux-saga": "^0.16.2",
+    "rxjs": "^6.5.3",
     "video-react": "^0.14.1"
   }
 }

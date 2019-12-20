@@ -11,15 +11,17 @@ import {history} from './utils/history'
      yield put({type: 'INCREMENT'});
  }
 
- function* incrementAsync() {
+ function* incrementAsync(params) {
+     console.log(params.payload);
     var testquest = function(){
         Api.get("/award/detail",{id:0}).then(
           res => console.log(res)
         )
     }
-    yield call(delay,1000);
-    const res = yield call(testquest);
-    yield put({type: 'INCREMENT'});
+    yield call(delay,3000);
+    // const res = yield call(testquest);
+    // var text = "kkkkk";
+    yield put({type: 'INCREMENT',payload: {text:'Learn Redux'}});
 }
 
  function* watchIncrementAsync() {

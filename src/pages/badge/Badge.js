@@ -14,7 +14,7 @@ let Counter = ({value,text, onIncrement, onDecrement, onIncrementAsync})=> (
       <h1>{text}</h1>
       <button onClick={(e) => onIncrement("正在加入",e)}>+</button>
       <button onClick={onDecrement}>-</button>
-      <button onClick={onIncrementAsync}>+</button>
+      <button onClick={(e) => onIncrementAsync("异步加入",e)}>+</button>
     </div>
   )
 
@@ -78,7 +78,7 @@ class Badge extends Component {
         var testnum = this.props.testnum;
         var text = this.props.text;
         console.log(this.props);
-        var {increment,decrement,incrementAsync} = this.props;
+        var {increment,incrementMax,decrement,incrementAsync} = this.props;
         return (
             <div className="badgePage">
                 <div className="badgeArea">
@@ -91,7 +91,7 @@ class Badge extends Component {
                 <Counter
                 value={testnum}
                 text={text}
-                onIncrement={increment}
+                onIncrement={incrementMax}
                 onDecrement={decrement}
                 onIncrementAsync={incrementAsync}
                 />
@@ -101,6 +101,7 @@ class Badge extends Component {
 }
 
 function mapStateToProps(state){
+    console.log(state);
     const {testnum,text} = state;
 	return {
         testnum,text

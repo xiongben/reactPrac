@@ -14,7 +14,15 @@ const reducer = handleActions({
         console.log(action);
         return {
             ...state,
-            testnum:state.testnum+10,
+            testnum:state.testnum+20,
+            text: action.payload.text,
+        }
+    },
+    'INCREMENT_MAX': (state,action) => {
+        console.log(action);
+        return {
+            ...state,
+            testnum:state.testnum+50,
             text: action.payload.text,
         }
     },
@@ -28,12 +36,27 @@ const reducer = handleActions({
         return {
             ...state,
             testnum:state.testnum+10,
+            text: action.payload.text,
         }
     },
     'LOGIN_SUBMIT': (state, action) => {
         return {
             ...state,
             testnum:state.testnum+10,
+        }
+    },
+    'TESTOB_A': (state, action) => {
+        // console.log(action);
+        return {
+            ...state,
+            text: action.payload.text,
+        }
+    },
+    'TESTOB_B': (state, action) => {
+        // console.log(action);
+        return {
+            ...state,
+            text: action.payload.text,
         }
     },
     'LOGIN_SUCCESS': (state, action) => {

@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import './common.less';
 import App from './App';
-import rootSaga from './sagas';
+// import rootSaga from './sagas';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware,compose, combineReducers } from 'redux';
@@ -12,8 +12,20 @@ import { createStore, applyMiddleware,compose, combineReducers } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import reducer from "./reduces/index";
 
+//rx.js
 
-const sagaMiddleware = createSagaMiddleware();
+import { createEpicMiddleware } from 'redux-observable';
+import { combineEpics } from 'redux-observable';
+import fetchUserEpic from './observable';
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const rootEpic = combineEpics(fetchUserEpic);
+const epicMiddleware = createEpicMiddleware();
+
+const enhancer = composeEnhancers(applyMiddleware(epicMiddleware));
+ 
+
+//sagas
+// const sagaMiddleware = createSagaMiddleware();
 
 // const logger = createLogger();
 // const initialState = 10;
@@ -23,17 +35,22 @@ let initialState = {
     testnum: 100,
     listdata: {},
 };
-const middlewares = [sagaMiddleware];
 
-const enhancer = compose(
-  applyMiddleware.apply(null, middlewares),
-  // window.devToolsExtension ? window.devToolsExtension() : f => f
-);
+  //sagas
+// const middlewares = [sagaMiddleware];
+
+// const enhancer = compose(
+//   applyMiddleware.apply(null, middlewares),
+//   // window.devToolsExtension ? window.devToolsExtension() : f => f
+// );
 
 
   const store = createStore(reducer,enhancer);
-  sagaMiddleware.run(rootSaga);
+
+  //sagas
+  // sagaMiddleware.run(rootSaga);
   
+  epicMiddleware.run(rootEpic)
   
   const render = () => {ReactDOM.render(
       <Provider store={store}>
