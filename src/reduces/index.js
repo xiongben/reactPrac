@@ -56,7 +56,7 @@ const reducer = handleActions({
         // console.log(action);
         return {
             ...state,
-            text: action.payload.text,
+            text: "BBB",
         }
     },
     'LOGIN_SUCCESS': (state, action) => {

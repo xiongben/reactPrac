@@ -8,13 +8,14 @@ import Api from "./../../utils/fetch"
 import About from "./../../component/About"
 
 
-let Counter = ({value,text, onIncrement, onDecrement, onIncrementAsync})=> (
+let Counter = ({value,text, onIncrement, onDecrement, onIncrementAsync, onOberserve})=> (
     <div>
       <h1>{value}</h1>
       <h1>{text}</h1>
       <button onClick={(e) => onIncrement("正在加入",e)}>+</button>
       <button onClick={onDecrement}>-</button>
       <button onClick={(e) => onIncrementAsync("异步加入",e)}>+</button>
+      <button onClick={(e) => onOberserve(e)}>observe test</button>
     </div>
   )
 
@@ -78,7 +79,7 @@ class Badge extends Component {
         var testnum = this.props.testnum;
         var text = this.props.text;
         console.log(this.props);
-        var {increment,incrementMax,decrement,incrementAsync} = this.props;
+        var {increment,incrementMax,decrement,incrementAsync,testobA} = this.props;
         return (
             <div className="badgePage">
                 <div className="badgeArea">
@@ -94,6 +95,7 @@ class Badge extends Component {
                 onIncrement={incrementMax}
                 onDecrement={decrement}
                 onIncrementAsync={incrementAsync}
+                onOberserve={testobA}
                 />
             </div>
                 )
@@ -101,7 +103,7 @@ class Badge extends Component {
 }
 
 function mapStateToProps(state){
-    console.log(state);
+    // console.log(state);
     const {testnum,text} = state;
 	return {
         testnum,text
