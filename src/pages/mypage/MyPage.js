@@ -4,7 +4,11 @@ import { Badge, NavBar, Icon } from 'antd-mobile';
 import classNames from 'classnames';
 import {history} from './../../utils/history';
 
-export default class MyPage extends Component {
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
+import actions from "./../../actions/index"
+
+class MyPage extends Component {
     constructor(props){
         super(props);
         this.state={
@@ -36,9 +40,16 @@ export default class MyPage extends Component {
         history.push(path);
     }
 
-    
+    changeAccountInfo=()=>{
+        console.log("change account info")
+    }
+
+
     render(){
-        
+        var accountInfo = this.props.accountInfo;
+        var {changeAccount} = this.props;
+        // console.log(this.props)
+
         return(
             <div className={styles.mypagebox}>
                 <NavBar
@@ -76,8 +87,29 @@ export default class MyPage extends Component {
                         <img alt="icon" className={styles.itemIcon} src={require('./../../static/icon/icon_dmail.png')}/>
                         <div className={styles.itemText}>Connect Us</div>
                     </div>
+                    <div>
+                        <p><span>{accountInfo.name} : {accountInfo.age}</span></p>
+                    </div>
+                    <div>
+                        <button onClick={()=>{changeAccount("kakaxi")}}>change account info</button>
+                    </div>
                 </div>
             </div>
         )
     }
 }
+
+
+function mapStateToProps(state){
+    const {accountInfo} = state;
+    return {
+        accountInfo
+    };
+};
+
+
+function mapDispatchToProps(dispatch){
+    return bindActionCreators(actions,dispatch);
+};
+
+export default  connect(mapStateToProps,mapDispatchToProps)(MyPage);
