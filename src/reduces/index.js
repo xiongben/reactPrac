@@ -8,6 +8,10 @@ let initialState = {
     listdata: {},
     text: "initddd",
     userId: null,
+    accountInfo:{
+	    name: "小红",
+        age: 24,
+    }
 };
 const reducer = handleActions({
     'INCREMENT': (state,action) => {
@@ -67,25 +71,35 @@ const reducer = handleActions({
             userId:action.data.userId,
         }
     },
+    'CHANGE_ACCOUNT': (state, action) => {
+        console.log(action)
+        return {
+            ...state,
+            accountInfo: {
+                name: action.payload.name,
+                age: 24,
+            }
+        }
+    },
 },initialState)
 
 
 
 // const reducer = (state , action) => {
 //     switch (action.type) {
-//       case 'INCREMENT' : 
+//       case 'INCREMENT' :
 //         return Object.assign({},state,{
 //             testnum:state.testnum+10
 //         });
-//       case 'DECREMENT' : 
+//       case 'DECREMENT' :
 //         return Object.assign({},state,{
 //             testnum:state.testnum-10
 //         });
-//       case 'INCREMENT_ASYNC' : 
+//       case 'INCREMENT_ASYNC' :
 //         return Object.assign({},state,{
 //             testnum:state.testnum+10
 //         });
-//       case 'GET_LIST' : 
+//       case 'GET_LIST' :
 //         return Object.assign({},state,{
 //             listData:action.data
 //         });

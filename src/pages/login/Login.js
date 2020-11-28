@@ -21,43 +21,10 @@ class Login extends Component {
         }
     }
     componentDidMount() {
-        gapi.load('auth2', function () {
-            auth2 = gapi.auth2.init({
-                client_id: '210356647672-c8fvqjnf22qjanbk29adcpv2q3sc37mp.apps.googleusercontent.com',
-                fetch_basic_profile: true,
-                cookie_policy: 'single_host_origin',
-                ux_mode: 'redirect',
-                redirect_uri: ''
-            });
-
-            var signinChanged = function (val) {
-                console.log('Signin state changed to ', val);
-                if (auth2.isSignedIn.get()) {
-                    var profile = auth2.currentUser.get().getBasicProfile();
-                    console.log('ID: ' + profile.getId());
-                    console.log('Full Name: ' + profile.getName());
-                    console.log('Given Name: ' + profile.getGivenName());
-                    console.log('Family Name: ' + profile.getFamilyName());
-                    console.log('Image URL: ' + profile.getImageUrl());
-                    console.log('Email: ' + profile.getEmail());
-                    var authToken = auth2.currentUser.get().getAuthResponse();
-                    console.log(authToken);
-                }
-            };
-            // Listen for sign-in state changes.
-            auth2.isSignedIn.listen(signinChanged);
-        });
-        //    this.testpost();
+        
     }
 
-    loginGoogle = () => {
-        auth2.signIn();
-    }
-
-    loginGoogleOut = () => {
-        auth2.disconnect();
-        auth2.signOut();
-    }
+    
 
     getData = () => {
         var params = { userId: this.state.userId, ownedBadgeWall: false, uid: this.state.userId };
@@ -102,8 +69,8 @@ class Login extends Component {
                     <input type="password" className={styles.inputbox} placeholder={langText.loginPage[lang].loginPass} />
                     <button className={styles.submitBtn} onClick={this.signUp}>{langText.loginPage[lang].signUp}</button>
                     <p className={styles.forgotText}>{langText.loginPage[lang].signUpWarn}</p>
-                    <Button onClick={this.loginGoogle}>Google Login 66</Button><WhiteSpace />
-                    <Button onClick={this.loginGoogleOut}>Google Login out</Button>
+                    {/* <Button onClick={this.loginGoogle}>Google Login 66</Button><WhiteSpace />
+                    <Button onClick={this.loginGoogleOut}>Google Login out</Button> */}
                 </div>
             </div>
         )

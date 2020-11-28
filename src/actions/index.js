@@ -15,7 +15,7 @@ import {createActions} from 'redux-actions';
 //     add_testnum_async: ()=>{
 //         return {type: 'INCREMENT_ASYNC'}
 //     },
-    
+
 // }
 
 export default createActions({
@@ -46,6 +46,9 @@ export default createActions({
     },
     'TESTOB_B': ()=> {
         return {text:"BBBBB"};
+    },
+    'CHANGE_ACCOUNT': (name)=>{
+        return {name: name}
     }
 });
 
