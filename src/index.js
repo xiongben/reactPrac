@@ -18,7 +18,7 @@ import { createEpicMiddleware } from 'redux-observable';
 import { combineEpics } from 'redux-observable';
 import fetchUserEpic from './observable';
 import 'rxjs';
-console.log(fetchUserEpic)
+// console.log(fetchUserEpic)
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootEpic = fetchUserEpic;
 const epicMiddleware = createEpicMiddleware(rootEpic);
@@ -52,9 +52,9 @@ let initialState = {
 
   //sagas
   // sagaMiddleware.run(rootSaga);
-  
+
   // epicMiddleware.run(rootEpic)
-  
+
   const render = () => {ReactDOM.render(
       <Provider store={store}>
           <App></App>

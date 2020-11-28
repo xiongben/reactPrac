@@ -10,6 +10,7 @@ import {Router, Route, Link, Redirect} from "react-router-dom";
 import {history} from './utils/history';
 
 import asyncComponent from './component/AsyncComponent';
+import ModeModel from "./pages/modelDemo/example1";
 
 const Badge = asyncComponent(() => import("./pages/badge/Badge"));
 const Award = asyncComponent(() => import("./pages/award/Award"));
@@ -27,12 +28,12 @@ class App extends Component {
     operation: null,
   };
 
-  
+
   render() {
     return (
       <Router history={history}>
         <div>
-         <Route exact path="/"  component={Login} />
+         <Route exact path="/"  component={ModeModel} />
           <Route  path="/badge" component={Badge} />
           <Route  path="/award" component={Award} />
           <Route  path="/login" component={Login} />
