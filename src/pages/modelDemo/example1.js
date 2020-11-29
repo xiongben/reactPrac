@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import "./strategyMode"
+import "./compositePattern"
+import "./decoratorPattern"
+import "./chainPattern"
 
 let ModeModel = ()=>(
     <div>
@@ -31,6 +35,8 @@ var ProxySingletonCreateDiv = (function () {
 
 var a = new ProxySingletonCreateDiv('test1')
 var b = new ProxySingletonCreateDiv('test2')
-console.log(a === b);
+// console.log(a === b);
+
+
 
 export default ModeModel;
