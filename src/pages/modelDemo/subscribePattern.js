@@ -53,4 +53,4 @@ Event.listen("a",function (mess) {
     console.log(mess)
 })
 
-Event.tigger("a","this is subscrib message!")
+// Event.tigger("a","this is subscrib message!")
