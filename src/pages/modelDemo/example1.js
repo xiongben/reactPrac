@@ -3,6 +3,7 @@ import "./strategyMode"
 import "./compositePattern"
 import "./decoratorPattern"
 import "./chainPattern"
+import "./subscribePattern"
 
 let ModeModel = ()=>(
     <div>
