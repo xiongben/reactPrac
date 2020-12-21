@@ -29,6 +29,7 @@ class Badge extends Component {
             userId: 1589618,
             detailData: {},
             showAbout: false,
+            testText: "",
         }
         
          
@@ -72,13 +73,26 @@ class Badge extends Component {
         this.child = ref;
     }
 
+    testfn = () => {
+        var str = this.state.testText;
+        str = str.split("\n");
+        str.forEach((item,index)=>{
+            str[index] =  item.replace(/\s+/g,"");
+        })
+        str = str.filter(item => item.length > 0)
+        console.log(str);
+    }
+    handleChange = (event) => {
+        this.setState({testText: event.target.value});
+    }
+
     
     render() {
         var arrlist = this.state.dataArr;
         var detail = this.state.detailData;
         var testnum = this.props.testnum;
         var text = this.props.text;
-        console.log(this.props);
+        // console.log(this.props);
         var {increment,incrementMax,decrement,incrementAsync,testobA} = this.props;
         return (
             <div className="badgePage">
@@ -97,6 +111,8 @@ class Badge extends Component {
                 onIncrementAsync={incrementAsync}
                 onOberserve={testobA}
                 />
+                <textarea rows="5" cols="50" value={this.state.testText} onChange={this.handleChange}></textarea>
+                <button onClick={this.testfn}>test</button>
             </div>
                 )
         }

@@ -51,7 +51,7 @@ Validator.prototype.start = function () {
 // var registerForm = document.getElementById("form");
 var registerForm = {
     userName: "xiaoming",
-    password: 123666,
+    password: 1236,
     phoneNumber: 13866666666,
 };
 
@@ -84,4 +84,4 @@ var validataFunc = function () {
     return errMsg;
 }
 
-// validataFunc();
+validataFunc();
